@@ -20,10 +20,10 @@ export const Footer: React.FC = () => {
           </div>
           
           <div className="flex items-center gap-6">
-            <a href="/privacy" className="text-sm text-[#78716c] hover:text-[#2d2926] transition-colors">
+            <a href="/designfree/privacy" className="text-sm text-[#78716c] hover:text-[#2d2926] transition-colors">
               Privacy Policy
             </a>
-            <a href="/copyright" className="text-sm text-[#78716c] hover:text-[#2d2926] transition-colors">
+            <a href="/designfree/copyright" className="text-sm text-[#78716c] hover:text-[#2d2926] transition-colors">
               Copyright & Credits
             </a>
             <a

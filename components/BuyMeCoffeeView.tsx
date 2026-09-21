@@ -11,7 +11,7 @@ export const BuyMeCoffeeView = () => {
       <div className="max-w-lg w-full bg-white border border-[#e7e5e0] rounded-2xl p-8 shadow-[0_2px_8px_rgba(0,0,0,0.04),0_4px_24px_rgba(0,0,0,0.06)] text-center">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img 
-          src="/qr_code.png" 
+          src="/designfree/qr_code.png" 
           alt="UPI QR Code" 
           className="w-56 h-56 mx-auto rounded-xl object-cover" 
           loading="lazy" 

@@ -36,7 +36,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, onSelectTab }) => {
             {tabs.map((tab) => (
               <button
                 key={tab}
-                onClick={() => onSelectTab ? onSelectTab(tab) : (window.location.href = '/')}
+                onClick={() => onSelectTab ? onSelectTab(tab) : (window.location.href = '/designfree/')}
                 className={`px-4 py-2 rounded-xl text-sm capitalize transition-all duration-200 ${
                   activeTab === tab
                     ? 'bg-[#f5f1ec] text-[#2d2926] font-semibold'
@@ -71,7 +71,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, onSelectTab }) => {
                     onSelectTab(tab);
                     setIsMobileMenuOpen(false);
                   } else {
-                    window.location.href = '/';
+                    window.location.href = '/designfree/';
                   }
                 }}
                 className={`block w-full text-left px-4 py-3 rounded-xl text-sm capitalize transition-all duration-200 ${
