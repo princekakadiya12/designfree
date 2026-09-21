@@ -1,0 +1,6 @@
+{
+  "name": "Prince Web Showcase & Prompt Vault",
+  "description": "An industry-standard gallery of 16 distinct web design archetypes with live previews, replication prompts, design resources, and creator community.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

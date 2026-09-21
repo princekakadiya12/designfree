@@ -1,0 +1,1975 @@
+{
+  "meta": {
+    "title": "The Vibe-Coder's Guide to Rebuilding Any Website Design with AI",
+    "subtitle": "How professional design teams work, how to pull a design system out of a reference site, and how to rebuild it with free AI tools without copying what you do not own.",
+    "version": "1.0.0",
+    "language": "en",
+    "generated_on": "2026-09-20",
+    "audience": [
+      "complete beginners",
+      "vibe coders",
+      "front-end developers who want faster workflows",
+      "designers who want to ship code"
+    ],
+    "reading_time_minutes": 45,
+    "how_to_use": [
+      "Read read_this_first and part_0 once. They take five minutes and change how you prompt.",
+      "Pick a path from quick_paths. Beginners start with path A, then repeat with path B.",
+      "Copy prompts from part_7 and replace the [PLACEHOLDERS].",
+      "Use part_8 as a checklist before you call anything finished."
+    ],
+    "fact_confidence_legend": {
+      "verified_this_session": "Checked on the generated_on date against a public source, an API or the npm registry. The source is named next to the fact.",
+      "standard_reference": "Established standard or long-published guidance (WCAG, Core Web Vitals, Tailwind docs). Stable, but re-check version numbers.",
+      "heuristic": "A rule of thumb used by practitioners. Useful defaults, not laws."
+    },
+    "companion_files": {
+      "resources_part_1": "free_resources_1_learning_community_reference.json",
+      "resources_part_2": "free_resources_2_ai_design_dev_tools.json",
+      "how_ids_work": "Entries named resource_id in this guide point at the id field in the two resource files."
+    },
+    "not_legal_advice": "Nothing here is legal advice. Copyright, trademark and platform rules differ by country and by product. If you sell something built from a reference, ask a qualified lawyer."
+  },
+  "table_of_contents": [
+    {
+      "key": "read_this_first",
+      "title": "The big idea, the 5-step loop and fidelity levels"
+    },
+    {
+      "key": "part_0_before_you_replicate",
+      "title": "What you may and may not copy (legal and ethics)"
+    },
+    {
+      "key": "new_methods_2026",
+      "title": "New methods worth trying"
+    },
+    {
+      "key": "quick_paths",
+      "title": "15-minute, 2-hour and weekend paths"
+    },
+    {
+      "key": "part_1_how_professional_design_works",
+      "title": "How professional design teams work"
+    },
+    {
+      "key": "part_2_design_fundamentals",
+      "title": "Design fundamentals with numbers"
+    },
+    {
+      "key": "part_3_tokens_and_specs",
+      "title": "Design tokens, Tailwind v4 and DESIGN.md"
+    },
+    {
+      "key": "part_4_analyze_a_reference",
+      "title": "Analyze a reference site with DevTools"
+    },
+    {
+      "key": "part_5_ai_tool_map",
+      "title": "AI tool map with verified free-tier facts"
+    },
+    {
+      "key": "part_6_workflows",
+      "title": "Four workflows"
+    },
+    {
+      "key": "part_7_prompt_library",
+      "title": "12 copy-paste prompts"
+    },
+    {
+      "key": "part_8_quality_gates",
+      "title": "Quality gates and screenshot tests"
+    },
+    {
+      "key": "part_9_deploy_and_launch",
+      "title": "Deploy, hosting rules and paid-access notes"
+    },
+    {
+      "key": "part_10_pitfalls_and_fixes",
+      "title": "Common pitfalls and fixes"
+    },
+    {
+      "key": "glossary",
+      "title": "Glossary"
+    },
+    {
+      "key": "sources",
+      "title": "Sources"
+    }
+  ],
+  "read_this_first": {
+    "big_idea": "You do not copy pixels. You extract a design system (colors, type, spacing, layout rules, component patterns), write it down in a form an AI can follow, and build with your own content and assets. That is faster, more accurate and legally safer than pasting a screenshot and hoping.",
+    "the_five_step_loop": [
+      {
+        "step": 1,
+        "name": "Look",
+        "what": "Capture screenshots and notes of the reference at 4 widths (1440, 1024, 768, 390 px)."
+      },
+      {
+        "step": 2,
+        "name": "Extract",
+        "what": "Read real values from DevTools: colors, fonts, sizes, spacing, container width, radius, shadows."
+      },
+      {
+        "step": 3,
+        "name": "Specify",
+        "what": "Write a short design spec (a DESIGN.md or a token table) in your own rounded numbers."
+      },
+      {
+        "step": 4,
+        "name": "Build",
+        "what": "Give the spec plus one section at a time to an AI builder or editor, using a component base such as shadcn/ui and Tailwind."
+      },
+      {
+        "step": 5,
+        "name": "Compare",
+        "what": "Overlay or diff screenshots, fix the differences, then run accessibility and performance checks."
+      }
+    ],
+    "fidelity_levels": [
+      {
+        "level": "L1 Structure",
+        "meaning": "Same page structure and layout logic (hero, feature grid, pricing, FAQ), different look and content.",
+        "risk": "Low. Layout patterns are common ideas."
+      },
+      {
+        "level": "L2 Style system",
+        "meaning": "Same spacing rhythm, type scale, color roles and component feel, rebuilt with your own brand, copy, images and icons.",
+        "risk": "Low to moderate. Stay away from distinctive brand elements and never reuse their assets."
+      },
+      {
+        "level": "L3 Pixel clone with their assets",
+        "meaning": "Their exact look plus their logos, images, text and code.",
+        "risk": "High. Only acceptable for your own site or with written permission. This is where copyright, trademark and impersonation problems start."
+      }
+    ],
+    "recommended_target": "Aim for L2 when you say 'same to same'. You get the professional feel of the reference without carrying its legal baggage.",
+    "why_spec_beats_screenshot_only": [
+      "A screenshot does not contain hover states, focus states, exact hex values, font names or spacing numbers. The AI guesses them.",
+      "A written spec can be reused for every page and every future prompt, so the site stays consistent.",
+      "A spec lets you change the brand (colors, fonts) in one place without regenerating everything."
+    ]
+  },
+  "part_0_before_you_replicate": {
+    "title": "Before you replicate: what you may and may not copy",
+    "why_this_is_first": "The techniques below work on any site, so the responsibility for how you use them is yours. This section keeps you out of trouble and, honestly, also produces a better result because your site will have its own identity.",
+    "generally_safe_to_reuse": [
+      "General design principles and layout patterns (a hero followed by a three-column feature grid is not owned by anyone).",
+      "Functional conventions such as a sticky header, a pricing table or a FAQ accordion.",
+      "The idea of a spacing rhythm, type scale or color role system. You should restate them as your own rounded numbers."
+    ],
+    "do_not_copy": [
+      "Their source code, copied or scraped verbatim (copyright).",
+      "Photos, illustrations, videos, icons and custom fonts you do not have a license for.",
+      "Logos, brand names and taglines (trademark), and their written copy.",
+      "Anything that makes visitors believe your site is theirs. Impersonation can also be fraud or phishing, whatever your intent."
+    ],
+    "platform_rules_you_should_know": [
+      {
+        "platform": "GitHub Pages",
+        "rule": "GitHub's docs allow a copy of an existing website as a learning exercise only if you write the code yourself, collect no user data and show a prominent disclaimer that it is not associated with the original. The same docs bar using Pages for sites primarily directed at commercial transactions.",
+        "source": "https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits",
+        "confidence": "verified_this_session"
+      },
+      {
+        "platform": "Vercel Hobby",
+        "rule": "Vercel's fair-use guidelines restrict the free Hobby plan to non-commercial personal use and list any method of requesting or processing payment from visitors as commercial.",
+        "source": "https://vercel.com/docs/limits/fair-use-guidelines",
+        "confidence": "verified_this_session"
+      },
+      {
+        "platform": "Open-source clone tools",
+        "rule": "Tools such as Open Lovable that scrape and recreate a site should only be pointed at sites you own or have permission to recreate.",
+        "source": "https://github.com/firecrawl/open-lovable",
+        "confidence": "verified_this_session"
+      },
+      {
+        "platform": "The reference site itself",
+        "rule": "Its terms of service may forbid automated access. Prefer manual capture with DevTools, keep requests gentle and respect robots.txt if you script anything.",
+        "source": null,
+        "confidence": "standard_reference"
+      }
+    ],
+    "safe_workflow": [
+      "Study, then close the tab. Work from your notes and your token table, not from their code.",
+      "Use your own logo, copy and images (or properly licensed ones from the resource files).",
+      "Change enough (brand colors, type pairing, illustration style) that nobody could mistake the result for the reference.",
+      "If the goal is to match your own existing site or a client's site, keep written permission."
+    ],
+    "if_you_sell_access": "If you charge for what you build, treat licenses seriously: check every font, image and icon license, and confirm your host's terms allow commercial use.",
+    "not_legal_advice": "This is general information, not legal advice."
+  },
+  "new_methods_2026": [
+    {
+      "name": "DESIGN.md: a design system as a plain-text file for agents",
+      "status": "alpha",
+      "confidence": "verified_this_session",
+      "what": "Google Labs published an open format (google-labs-code/design.md, Apache-2.0) that pairs machine-readable design tokens with written rationale. Its CLI offers lint, diff, export and spec commands, checks WCAG contrast, and can export to Tailwind or W3C DTCG-format tokens.",
+      "why_it_matters": "Your AI editor reads it every time, so it stops inventing new colors and spacings on every prompt.",
+      "try_in_10_minutes": "Write a DESIGN.md with your tokens, run `npx @google/design.md lint DESIGN.md`, then paste it into your AI tool with the instruction 'follow DESIGN.md strictly'. Read the current spec with `npx @google/design.md spec` because the format is still changing.",
+      "resource_names": [
+        "DESIGN.md (Google Labs)",
+        "Awesome DESIGN.md"
+      ],
+      "source": "https://github.com/google-labs-code/design.md",
+      "resource_ids": [
+        "design-md-google-labs",
+        "awesome-design-md"
+      ]
+    },
+    {
+      "name": "Extract a design system from a URL",
+      "status": "free with daily credit limits",
+      "confidence": "verified_this_session",
+      "what": "Google Stitch (Google Labs) generates multi-screen UI from prompts, sketches or screenshots, can extract a design system from a URL, and exports HTML/CSS, Figma paste and DESIGN.md. It also offers an MCP server.",
+      "why_it_matters": "It automates step 2 of the loop. Use it on your own site or a site you have permission to study, then edit the result by hand.",
+      "try_in_10_minutes": "Open Stitch, give it a reference URL you are allowed to study, read the extracted tokens, and export DESIGN.md to review.",
+      "resource_names": [
+        "Google Stitch"
+      ],
+      "source": "https://www.superdesign.dev/blog/google-stitch-review",
+      "resource_ids": [
+        "google-stitch"
+      ]
+    },
+    {
+      "name": "Give the agent eyes: Chrome DevTools MCP",
+      "status": "official, actively developed",
+      "confidence": "verified_this_session",
+      "what": "An MCP server from the Chrome DevTools team lets a coding agent open a real Chrome, take screenshots, read the console and network, and record performance traces (npm package chrome-devtools-mcp, latest 1.9.0 on the check date).",
+      "why_it_matters": "The agent can look at its own output, spot layout bugs and fix them, instead of you describing every difference.",
+      "try_in_10_minutes": "Add the MCP server to your editor's MCP settings using the command `npx chrome-devtools-mcp@latest`, then ask: 'Open localhost:5173, screenshot at 390px wide and list layout problems.'",
+      "resource_names": [
+        "Chrome DevTools MCP",
+        "Playwright MCP"
+      ],
+      "source": "https://github.com/ChromeDevTools/chrome-devtools-mcp/",
+      "resource_ids": [
+        "chrome-devtools-mcp",
+        "playwright-mcp"
+      ]
+    },
+    {
+      "name": "Tailwind CSS v4: tokens live in CSS",
+      "status": "stable",
+      "confidence": "verified_this_session",
+      "what": "Tailwind v4 is configured in your CSS with an @theme block, so your design tokens become CSS variables and utility classes at once. The npm registry showed tailwindcss 4.3.3 on the check date.",
+      "why_it_matters": "Your DESIGN.md tokens map one-to-one onto @theme, which makes AI output easy to keep on-brand.",
+      "try_in_10_minutes": "See the snippet in part_3_tokens_and_specs.",
+      "resource_names": [
+        "Tailwind CSS"
+      ],
+      "source": "https://www.npmjs.com/package/tailwindcss",
+      "resource_ids": [
+        "tailwind-css"
+      ]
+    },
+    {
+      "name": "Components you own: shadcn/ui and its CLI",
+      "status": "stable",
+      "confidence": "verified_this_session",
+      "what": "shadcn/ui copies accessible React components (built on Radix and Tailwind) into your repo. The CLI package `shadcn` was at 4.21.0 on the check date. Several AI app builders generate code on this base.",
+      "why_it_matters": "AI models know it well, and because the code is yours you can restyle it to any design system.",
+      "try_in_10_minutes": "In a Vite or Next.js project run `npx shadcn@latest init`, then `npx shadcn@latest add button card`.",
+      "resource_names": [
+        "shadcn/ui",
+        "tweakcn"
+      ],
+      "source": "https://ui.shadcn.com",
+      "resource_ids": [
+        "shadcn-ui",
+        "tweakcn"
+      ]
+    },
+    {
+      "name": "Screenshots as a similarity meter",
+      "status": "stable",
+      "confidence": "standard_reference",
+      "what": "Playwright can compare a page screenshot against a saved image and fail when too many pixels differ (toHaveScreenshot with maxDiffPixelRatio). Playwright's npm latest was 1.63.0 on the check date.",
+      "why_it_matters": "It turns 'looks about right' into a number you can improve, and it catches regressions when the AI changes something else.",
+      "try_in_10_minutes": "See the test snippet in part_8_quality_gates.",
+      "resource_names": [
+        "Playwright"
+      ],
+      "source": "https://playwright.dev/docs/test-snapshots",
+      "resource_ids": [
+        "playwright"
+      ]
+    },
+    {
+      "name": "Docs and context for agents",
+      "status": "fast-moving",
+      "confidence": "verified_this_session",
+      "what": "Context7 (an MCP server) feeds current library docs to your assistant, Repomix and Gitingest pack a repo into one prompt-friendly file, DeepWiki explains public repos, and AGENTS.md and llms.txt are conventions for telling agents how your project or site works.",
+      "why_it_matters": "Most 'AI broke my build' problems come from outdated API knowledge. Feeding current docs reduces them.",
+      "try_in_10_minutes": "Add Context7 to your MCP config and end prompts with 'use context7 for the latest API'.",
+      "resource_names": [
+        "Context7",
+        "Repomix",
+        "Gitingest",
+        "DeepWiki",
+        "AGENTS.md",
+        "llms.txt"
+      ],
+      "source": "https://github.com/upstash/context7",
+      "resource_ids": [
+        "context7",
+        "repomix",
+        "gitingest",
+        "deepwiki",
+        "agents-md",
+        "llms-txt"
+      ]
+    }
+  ],
+  "quick_paths": [
+    {
+      "id": "A",
+      "name": "15-minute first draft",
+      "goal": "See a close first draft of a layout fast.",
+      "cost": "0 with free tiers, but credits are limited",
+      "skill_needed": "none",
+      "steps": [
+        "Choose a reference you own or may study, and capture two screenshots: desktop (1440 px) and mobile (390 px).",
+        "Open v0, Lovable, Bolt.new or Google Stitch. Attach the screenshots and paste prompt P1 then P3 from part_7.",
+        "Do at most three follow-up prompts, each about ONE thing (for example 'reduce hero padding to 96px' or 'make cards 12px radius').",
+        "Replace all text, images, logos and icons with your own before you show it to anyone."
+      ],
+      "expected_result": "A layout draft that resembles the structure. Colors, fonts and spacing usually still need tightening, which paths B and C address.",
+      "watch_out": "Free credits run out quickly (see part_5 for verified limits). Spend them on screenshots and clear prompts, not on vague requests."
+    },
+    {
+      "id": "B",
+      "name": "2-hour spec-first replica",
+      "goal": "A faithful L2 rebuild with your own brand.",
+      "cost": "0",
+      "skill_needed": "beginner-friendly",
+      "steps": [
+        "Follow part_4 to capture screenshots and read real values from DevTools.",
+        "Ask any free vision-capable chat (Gemini, Claude, ChatGPT free tiers) to turn your screenshots plus measurements into a token table with prompt P1, then a DESIGN.md with prompt P2.",
+        "Create a Vite or Next.js project with Tailwind and shadcn/ui (commands in part_3).",
+        "Use an AI editor or agent (Cursor, Copilot Free, Cline, Aider, Antigravity) with prompts P3 and P4, one section at a time.",
+        "Run the checks in part_8 and fix what fails."
+      ],
+      "expected_result": "A consistent site whose spacing, type and color match the reference's rhythm, built on your own content.",
+      "watch_out": "Commit to Git after every good step so you can undo a bad AI edit."
+    },
+    {
+      "id": "C",
+      "name": "Weekend production build",
+      "goal": "A site you can launch, including a paid-access product.",
+      "cost": "0 to low",
+      "skill_needed": "some patience",
+      "steps": [
+        "Do path B.",
+        "Add motion with restraint (P9), a responsive pass (P6), an accessibility pass (P7) and a performance pass (P10).",
+        "Set up Playwright screenshot tests at 4 widths to protect your layout.",
+        "Deploy using part_9, choosing a host whose free plan allows commercial use if you take payments.",
+        "Add analytics and submit the site to Google Search Console."
+      ],
+      "expected_result": "A site that passes accessibility and speed checks and stays consistent as you add pages.",
+      "watch_out": "GitHub Pages and Vercel's Hobby plan restrict sites that take payments. See part_9."
+    }
+  ],
+  "part_1_how_professional_design_works": {
+    "title": "How professional design teams actually work",
+    "summary": "Most agencies and product teams move through the same eight phases. Knowing them lets you ask an AI for the right thing at the right time, instead of asking for 'a beautiful website' and getting a generic one.",
+    "confidence": "standard_reference",
+    "roles": [
+      {
+        "role": "Product manager",
+        "does": "Defines the problem, priorities and success metrics."
+      },
+      {
+        "role": "UX researcher",
+        "does": "Talks to users, tests prototypes and finds what actually confuses people."
+      },
+      {
+        "role": "UX / product designer",
+        "does": "Designs flows, wireframes and interactions."
+      },
+      {
+        "role": "Visual / UI designer",
+        "does": "Owns look and feel: color, type, spacing, imagery and components."
+      },
+      {
+        "role": "Content designer",
+        "does": "Writes interface text and structures information."
+      },
+      {
+        "role": "Design engineer / front-end developer",
+        "does": "Turns designs into responsive, accessible code and maintains the component library."
+      },
+      {
+        "role": "Accessibility specialist",
+        "does": "Checks the design and code against WCAG and tests with assistive technology."
+      }
+    ],
+    "phases": [
+      {
+        "n": 1,
+        "name": "Discover",
+        "goal": "Understand users, goals and competitors.",
+        "outputs": [
+          "user goals",
+          "competitor audit",
+          "list of must-have content"
+        ],
+        "free_tools": [
+          "Google Forms",
+          "Microsoft Clarity (on existing sites)"
+        ],
+        "ai_shortcut": "Ask a chat model to summarise five competitor pages you paste in, listing what each does well and badly.",
+        "done_when": "You can state in two sentences who the site is for and what they should do there."
+      },
+      {
+        "n": 2,
+        "name": "Define structure (information architecture)",
+        "goal": "Decide pages, navigation and content order.",
+        "outputs": [
+          "sitemap",
+          "user flows",
+          "page content outlines"
+        ],
+        "free_tools": [
+          "Excalidraw",
+          "diagrams.net",
+          "Mermaid"
+        ],
+        "ai_shortcut": "Ask for a sitemap in Mermaid syntax, then edit it.",
+        "done_when": "Every page has a purpose, and the main action is reachable in two clicks."
+      },
+      {
+        "n": 3,
+        "name": "Wireframe",
+        "goal": "Lay out blocks without color or style so you argue about structure, not taste.",
+        "outputs": [
+          "low-fidelity wireframes for key pages, mobile first"
+        ],
+        "free_tools": [
+          "Excalidraw",
+          "Figma (free plan)",
+          "Penpot"
+        ],
+        "ai_shortcut": "Describe the page and ask a builder such as Stitch for grayscale screens.",
+        "done_when": "Each section has a job (attract, explain, convince, act)."
+      },
+      {
+        "n": 4,
+        "name": "Visual design and design system",
+        "goal": "Choose color, type, spacing, radius and components, then apply them consistently.",
+        "outputs": [
+          "mood board",
+          "design tokens",
+          "core components",
+          "high-fidelity mock-ups"
+        ],
+        "free_tools": [
+          "Figma",
+          "Penpot",
+          "Coolors",
+          "Realtime Colors",
+          "Google Fonts",
+          "Fontshare"
+        ],
+        "ai_shortcut": "This is where the spec-first method (parts 3 and 4) pays off: write tokens and a DESIGN.md before generating pages.",
+        "done_when": "You can build a new page using only existing tokens and components."
+      },
+      {
+        "n": 5,
+        "name": "Prototype and test",
+        "goal": "Click through the design with real people and fix confusion early.",
+        "outputs": [
+          "clickable prototype",
+          "usability findings"
+        ],
+        "free_tools": [
+          "Figma prototype mode",
+          "Penpot prototyping"
+        ],
+        "ai_shortcut": "Ask an AI to role-play a first-time visitor and list where they would hesitate. Treat it as a hint, not a substitute for real users.",
+        "done_when": "Five people can complete the main task without help."
+      },
+      {
+        "n": 6,
+        "name": "Handoff",
+        "goal": "Give developers everything needed: tokens, component specs, states, assets.",
+        "outputs": [
+          "token file",
+          "component specs",
+          "exported assets"
+        ],
+        "free_tools": [
+          "Storybook",
+          "Figma Dev Mode features (limited on free plans)",
+          "DESIGN.md"
+        ],
+        "ai_shortcut": "Your DESIGN.md is the handoff document for the AI developer.",
+        "done_when": "No developer needs to ask 'what color is this?'."
+      },
+      {
+        "n": 7,
+        "name": "Build and QA",
+        "goal": "Implement responsive, accessible, fast pages and test them.",
+        "outputs": [
+          "production code",
+          "test results"
+        ],
+        "free_tools": [
+          "Playwright",
+          "Lighthouse",
+          "axe-core",
+          "WAVE",
+          "WebAIM Contrast Checker"
+        ],
+        "ai_shortcut": "Use prompts P3 to P10, then automated checks.",
+        "done_when": "Part 8 checklist passes."
+      },
+      {
+        "n": 8,
+        "name": "Launch and iterate",
+        "goal": "Ship, measure, learn and improve.",
+        "outputs": [
+          "live site",
+          "analytics",
+          "backlog"
+        ],
+        "free_tools": [
+          "Cloudflare Pages",
+          "Umami",
+          "Google Search Console",
+          "PageSpeed Insights"
+        ],
+        "ai_shortcut": "Paste analytics summaries and ask for a prioritised list of experiments.",
+        "done_when": "You review real data at a regular interval."
+      }
+    ],
+    "design_system_layers": [
+      {
+        "layer": "Tokens",
+        "example": "color.brand.600, space.4, radius.md, font.size.lg"
+      },
+      {
+        "layer": "Primitives",
+        "example": "Button, Input, Card, Badge"
+      },
+      {
+        "layer": "Patterns",
+        "example": "Pricing table, sign-up form, navigation bar"
+      },
+      {
+        "layer": "Templates / pages",
+        "example": "Landing page, dashboard, article"
+      }
+    ],
+    "layers_note": "This mirrors atomic design (atoms, molecules, organisms, templates, pages) popularised by Brad Frost. Tokens sit underneath and are what a rebrand changes."
+  },
+  "part_2_design_fundamentals": {
+    "title": "Design fundamentals with numbers you can prompt",
+    "how_to_read": "Each card gives a rule, concrete numbers, the classic mistake and a prompt hint. Numbers marked heuristic are defaults, not laws.",
+    "principles": [
+      {
+        "name": "Visual hierarchy",
+        "confidence": "heuristic",
+        "rule": "Make the most important thing obviously the most important using size, weight, color, spacing and position.",
+        "numbers": [
+          "One primary action per screen region",
+          "Headline at least about 1.5 to 2 times body size on landing pages"
+        ],
+        "common_mistake": "Everything is bold or colorful, so nothing stands out.",
+        "prompt_hint": "Give each section exactly one focal element and one primary button style."
+      },
+      {
+        "name": "Spacing system",
+        "confidence": "standard_reference",
+        "rule": "Use a small scale of spacing values built on a 4 px or 8 px base and reuse them everywhere. Tailwind's default spacing unit is 0.25 rem, which is 4 px at the default browser font size.",
+        "numbers": [
+          "Scale example: 4, 8, 12, 16, 24, 32, 48, 64, 96 px",
+          "Space inside a group should be smaller than space between groups (proximity)"
+        ],
+        "common_mistake": "Random one-off values (13 px here, 22 px there) that make the page feel off without anyone knowing why.",
+        "prompt_hint": "Use only spacing from this scale: [SCALE]. Do not use arbitrary pixel values."
+      },
+      {
+        "name": "Typography",
+        "confidence": "standard_reference",
+        "rule": "Pick one or two typefaces, a clear size scale and comfortable line length and leading.",
+        "numbers": [
+          "Body text 16 px or larger",
+          "Type scale ratios often 1.2 (minor third) to 1.333 (perfect fourth)",
+          "Body line-height about 1.4 to 1.6, headings about 1.1 to 1.3",
+          "Line length about 45 to 75 characters (max-width around 65ch)",
+          "Use no more than 2 to 3 font weights"
+        ],
+        "common_mistake": "Too many font sizes, full-width text lines on large screens and tight body line-height.",
+        "prompt_hint": "Use this type scale: [SCALE]. Body max-width 65ch. Headings use [FONT], body uses [FONT]."
+      },
+      {
+        "name": "Color roles",
+        "confidence": "heuristic",
+        "rule": "Think in roles, not swatches: neutral scale, one primary brand color, an optional accent, and semantic colors for success, warning, error and info.",
+        "numbers": [
+          "60-30-10 is a rough proportion heuristic: about 60 percent dominant neutral, 30 percent secondary, 10 percent accent",
+          "A neutral scale of about 10 steps and a primary scale of about 10 steps is typical"
+        ],
+        "common_mistake": "Using the brand color for everything, including large backgrounds, body text and error states.",
+        "prompt_hint": "Define color roles as CSS variables and reference roles (primary, muted, destructive), never raw hex values, in components."
+      },
+      {
+        "name": "Contrast and color use (accessibility)",
+        "confidence": "standard_reference",
+        "rule": "WCAG 2.2 AA requires 4.5:1 contrast for normal text and 3:1 for large text and for UI components and graphical objects. Do not rely on color alone to convey meaning.",
+        "numbers": [
+          "Text: 4.5:1 (AA), 7:1 (AAA)",
+          "Large text and UI components: 3:1 (AA)",
+          "Large text means about 24 px regular or about 18.66 px bold and up"
+        ],
+        "common_mistake": "Light gray text on white and placeholder text that cannot be read.",
+        "prompt_hint": "All text and interactive states must meet WCAG 2.2 AA contrast. List any pair that does not."
+      },
+      {
+        "name": "Layout, grid and breakpoints",
+        "confidence": "standard_reference",
+        "rule": "Design mobile first, then add breakpoints. A 12-column grid and a centered container with a maximum width are common on desktop.",
+        "numbers": [
+          "Tailwind default breakpoints: sm 640, md 768, lg 1024, xl 1280, 2xl 1536 px",
+          "Test at 320, 390, 768, 1024 and 1440 px",
+          "WCAG reflow expects content to work at 320 CSS px wide without two-way scrolling"
+        ],
+        "common_mistake": "Designing only at 1440 px and hoping mobile works.",
+        "prompt_hint": "Build mobile first and list the layout at each breakpoint before writing code."
+      },
+      {
+        "name": "Touch targets and forms",
+        "confidence": "standard_reference",
+        "rule": "Make tap targets big enough and label every input.",
+        "numbers": [
+          "WCAG 2.2 minimum target size 24 by 24 CSS px",
+          "Apple guidance about 44 pt, Material guidance about 48 dp for comfortable touch"
+        ],
+        "common_mistake": "Tiny icon-only buttons with no label.",
+        "prompt_hint": "All interactive elements at least 44 by 44 px on mobile, each input has a visible label."
+      },
+      {
+        "name": "States and consistency",
+        "confidence": "standard_reference",
+        "rule": "Every interactive component needs default, hover, focus-visible, active, disabled, loading and error states, and empty states for lists.",
+        "numbers": [
+          "Visible keyboard focus indicator on every interactive element"
+        ],
+        "common_mistake": "Only designing the default state, then removing focus outlines.",
+        "prompt_hint": "For each component, implement all states and show a keyboard focus ring."
+      },
+      {
+        "name": "Motion with restraint",
+        "confidence": "heuristic",
+        "rule": "Use short, purposeful transitions and respect users who ask for less motion.",
+        "numbers": [
+          "Typical UI transitions about 150 to 300 ms",
+          "Honor the prefers-reduced-motion media query"
+        ],
+        "common_mistake": "Animating everything, which is slow and distracting.",
+        "prompt_hint": "Add motion only to communicate state or guide attention, and disable non-essential animation under prefers-reduced-motion."
+      },
+      {
+        "name": "Performance as design",
+        "confidence": "standard_reference",
+        "rule": "Speed is part of the experience. Google's Core Web Vitals 'good' thresholds, measured at the 75th percentile of real visits, are the usual targets.",
+        "numbers": [
+          "LCP 2.5 s or less",
+          "INP 200 ms or less",
+          "CLS 0.1 or less"
+        ],
+        "common_mistake": "Huge unoptimised hero images and web fonts that block rendering.",
+        "prompt_hint": "Hero image must be optimised (WebP or AVIF) with explicit width and height, and fonts self-hosted with font-display swap."
+      }
+    ],
+    "ux_laws_worth_knowing": [
+      {
+        "law": "Jakob's law",
+        "meaning": "People expect your site to work like the sites they already use.",
+        "use_it_by": "Keep navigation and form patterns conventional."
+      },
+      {
+        "law": "Fitts's law",
+        "meaning": "Bigger and closer targets are faster to hit.",
+        "use_it_by": "Make primary buttons large and put them where the eye ends up."
+      },
+      {
+        "law": "Hick's law",
+        "meaning": "More choices mean slower decisions.",
+        "use_it_by": "Limit navigation items and options per screen."
+      },
+      {
+        "law": "Aesthetic-usability effect",
+        "meaning": "People perceive attractive designs as easier to use.",
+        "use_it_by": "Invest in polish, but never at the expense of clarity."
+      },
+      {
+        "law": "Von Restorff (isolation) effect",
+        "meaning": "The item that differs is the one remembered.",
+        "use_it_by": "Style only the primary action differently."
+      },
+      {
+        "law": "Doherty threshold",
+        "meaning": "Responses within roughly 400 ms feel instant.",
+        "use_it_by": "Show feedback or loading states quickly."
+      }
+    ],
+    "laws_source": "https://lawsofux.com"
+  },
+  "part_3_tokens_and_specs": {
+    "title": "Design tokens and specs: the file your AI reads every time",
+    "confidence": "standard_reference",
+    "what_tokens_are": "Design tokens are named values for design decisions: colors, font sizes, spacing, radius, shadows. Instead of writing #0f766e in forty places you write brand-700 once. Change the token and the whole site follows.",
+    "three_tiers": [
+      {
+        "tier": "Primitive",
+        "example": "teal-700 = #0f766e",
+        "job": "Raw palette and scales."
+      },
+      {
+        "tier": "Semantic",
+        "example": "color-primary = teal-700",
+        "job": "Says what a value is for. This is what components use."
+      },
+      {
+        "tier": "Component",
+        "example": "button-bg = color-primary",
+        "job": "Optional overrides for one component."
+      }
+    ],
+    "example_token_table": {
+      "note": "Illustrative brand palette built from Tailwind's slate and teal values. Replace with your own.",
+      "color_primitives": {
+        "slate-50": "#f8fafc",
+        "slate-100": "#f1f5f9",
+        "slate-200": "#e2e8f0",
+        "slate-300": "#cbd5e1",
+        "slate-500": "#64748b",
+        "slate-600": "#475569",
+        "slate-700": "#334155",
+        "slate-900": "#0f172a",
+        "teal-50": "#f0fdfa",
+        "teal-500": "#14b8a6",
+        "teal-600": "#0d9488",
+        "teal-700": "#0f766e",
+        "teal-800": "#115e59",
+        "white": "#ffffff"
+      },
+      "color_roles": {
+        "background": "white",
+        "surface": "slate-50",
+        "border": "slate-200",
+        "text": "slate-900",
+        "text_muted": "slate-600",
+        "primary": "teal-700",
+        "primary_text": "white",
+        "primary_hover": "teal-800"
+      },
+      "type_scale_px": {
+        "xs": 12,
+        "sm": 14,
+        "base": 16,
+        "lg": 20,
+        "xl": 24,
+        "2xl": 32,
+        "3xl": 40,
+        "4xl": 56
+      },
+      "type_scale_note": "Roughly a 1.25 to 1.4 ratio. Body 16 px, line-height 1.5; headings line-height 1.15 to 1.25.",
+      "spacing_px": [
+        4,
+        8,
+        12,
+        16,
+        24,
+        32,
+        48,
+        64,
+        96
+      ],
+      "radius_px": {
+        "sm": 6,
+        "md": 10,
+        "lg": 16,
+        "full": 9999
+      },
+      "container_max_width_px": 1200,
+      "breakpoints_px": {
+        "sm": 640,
+        "md": 768,
+        "lg": 1024,
+        "xl": 1280
+      },
+      "contrast_checks_computed": [
+        {
+          "foreground_role": "text",
+          "background_role": "background",
+          "used_for": "normal text",
+          "ratio": 17.85,
+          "required_ratio": 4.5,
+          "passes_wcag_aa": true
+        },
+        {
+          "foreground_role": "text_muted",
+          "background_role": "background",
+          "used_for": "normal text",
+          "ratio": 7.58,
+          "required_ratio": 4.5,
+          "passes_wcag_aa": true
+        },
+        {
+          "foreground_role": "text",
+          "background_role": "surface",
+          "used_for": "normal text",
+          "ratio": 17.06,
+          "required_ratio": 4.5,
+          "passes_wcag_aa": true
+        },
+        {
+          "foreground_role": "text_muted",
+          "background_role": "surface",
+          "used_for": "normal text",
+          "ratio": 7.24,
+          "required_ratio": 4.5,
+          "passes_wcag_aa": true
+        },
+        {
+          "foreground_role": "primary_text",
+          "background_role": "primary",
+          "used_for": "button label",
+          "ratio": 5.47,
+          "required_ratio": 4.5,
+          "passes_wcag_aa": true
+        },
+        {
+          "foreground_role": "primary",
+          "background_role": "background",
+          "used_for": "UI component or large text",
+          "ratio": 5.47,
+          "required_ratio": 3.0,
+          "passes_wcag_aa": true
+        },
+        {
+          "foreground_role": "primary_text",
+          "background_role": "primary_hover",
+          "used_for": "button label on hover",
+          "ratio": 7.58,
+          "required_ratio": 4.5,
+          "passes_wcag_aa": true
+        },
+        {
+          "foreground_role": "border",
+          "background_role": "background",
+          "used_for": "decorative border (no requirement)",
+          "ratio": 1.23,
+          "required_ratio": null,
+          "passes_wcag_aa": null
+        }
+      ],
+      "hover_state_lesson": "White text on teal-600 (#0d9488) measures 3.74:1, below the 4.5:1 AA minimum for normal text, so the hover color here is the darker teal-800. Always check hover and focus states, not just the default.",
+      "contrast_note": "Ratios were computed with the WCAG relative-luminance formula. All listed text and UI pairs meet WCAG 2.2 AA for their use."
+    },
+    "tailwind_v4_theme_snippet": {
+      "language": "css",
+      "code": "@import \"tailwindcss\";\n\n@theme {\n  --font-sans: \"Inter\", ui-sans-serif, system-ui, sans-serif;\n\n  --color-brand-50: #f0fdfa;\n  --color-brand-500: #14b8a6;\n  --color-brand-600: #0d9488;\n  --color-brand-700: #0f766e;\n\n  --radius-card: 0.75rem;\n  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.06), 0 4px 12px rgb(15 23 42 / 0.08);\n}",
+      "how_it_works": "In Tailwind v4, variables in the @theme block become both CSS variables and utility classes (for example bg-brand-700, rounded-card, shadow-card). Tailwind's npm latest was 4.3.3 on 2026-09-20.",
+      "source": "https://tailwindcss.com/docs/theme"
+    },
+    "project_setup_commands": {
+      "note": "Typical free setup for a static-friendly React site. Check each tool's docs for current flags.",
+      "commands": [
+        "npm create vite@latest my-site -- --template react-ts",
+        "cd my-site && npm install",
+        "npm install tailwindcss @tailwindcss/vite",
+        "npx shadcn@latest init",
+        "npx shadcn@latest add button card input"
+      ],
+      "versions_read_on_2026_09_20": {
+        "vite": "8.3.0",
+        "react": "19.3.0",
+        "tailwindcss": "4.3.3",
+        "shadcn (CLI)": "4.21.0",
+        "next": "16.3.5",
+        "astro": "7.3.3"
+      }
+    },
+    "design_md": {
+      "what": "A DESIGN.md pairs tokens (machine-readable) with written rationale (why the design looks this way). Google Labs open-sourced the format under Apache-2.0 and marks it alpha. The CLI has lint, diff, export and spec commands, checks contrast, and exports to Tailwind or DTCG-format tokens.",
+      "illustrative_skeleton": "---\nname: Example Co\ncolors:\n  primary: \"#0f766e\"\n  background: \"#ffffff\"\n  text: \"#0f172a\"\ntypography:\n  base: { size: 16px, lineHeight: 1.5 }\nspacing: [4, 8, 12, 16, 24, 32, 48, 64, 96]\n---\n\n## Overview\nCalm, trustworthy, information-dense. One teal accent on a mostly neutral page.\n\n## Do\n- Use the primary color only for the main action in each view.\n\n## Don't\n- Do not add new colors or arbitrary pixel values.",
+      "skeleton_warning": "This skeleton is only an illustration of the idea. Key names in the real format may differ. Run `npx @google/design.md spec` and follow the current spec.",
+      "source": "https://github.com/google-labs-code/design.md",
+      "community_examples": "VoltAgent/awesome-design-md collects brand-inspired DESIGN.md files. Use them to learn structure, not to copy brands."
+    },
+    "where_tokens_come_from_when_replicating": [
+      "Read them from the reference with DevTools (part 4), then round to your own scale.",
+      "Ask a design tool that extracts them, such as Google Stitch's design-system extraction, and review the result by hand.",
+      "Start from your own brand: choose a palette (Coolors, Realtime Colors), a type pairing (Fontpair, Fontshare, Google Fonts) and keep the reference's rhythm, not its exact values."
+    ]
+  },
+  "part_4_analyze_a_reference": {
+    "title": "Analyze a reference like a professional",
+    "gate": "Only study sites you own, have permission to study, or are using for learning at the L1 or L2 fidelity level described in part_0.",
+    "confidence": "standard_reference",
+    "steps": [
+      {
+        "n": 1,
+        "name": "Capture the page",
+        "how": [
+          "In Chrome, open DevTools, toggle the device toolbar (Ctrl/Cmd+Shift+M) and set widths 1440, 1024, 768 and 390.",
+          "Open the Command Menu (Ctrl/Cmd+Shift+P), run 'Capture full size screenshot' at each width.",
+          "Record a short screen video of hover, scroll and menu behavior (OBS Studio is free)."
+        ],
+        "output": "8 or more screenshots plus one video."
+      },
+      {
+        "n": 2,
+        "name": "Read the real tokens",
+        "how": [
+          "Select the <html> element and look at :root in the Styles pane. Many sites already expose CSS custom properties for colors and spacing.",
+          "Open More tools then CSS Overview and click Capture overview to list colors, fonts and media queries used on the page.",
+          "Click any text element and check the Computed tab for font-size, line-height, letter-spacing and the rendered font.",
+          "Use the color picker's eyedropper to sample colors that are not in variables."
+        ],
+        "output": "A raw list of colors, fonts and sizes."
+      },
+      {
+        "n": 3,
+        "name": "Measure the layout",
+        "how": [
+          "Hover elements in the Elements panel to see margin and padding overlays.",
+          "Use the Layout pane to toggle grid and flexbox overlays and read gaps and column counts.",
+          "Resize the viewport slowly and note the widths where the layout changes (the breakpoints)."
+        ],
+        "output": "Container width, columns, gaps, section padding, breakpoints."
+      },
+      {
+        "n": 4,
+        "name": "List the components",
+        "how": [
+          "Name each block (header, hero, logo cloud, feature grid, testimonial, pricing, FAQ, footer) using The Component Gallery's vocabulary.",
+          "For each, note variants and states (hover, focus, active, disabled)."
+        ],
+        "output": "Component inventory with states."
+      },
+      {
+        "n": 5,
+        "name": "Note motion and behavior",
+        "how": [
+          "Open More tools then Animations to see timing of transitions.",
+          "Write down durations and easings you observe, rounded (for example 200 ms ease-out)."
+        ],
+        "output": "Motion notes."
+      },
+      {
+        "n": 6,
+        "name": "Convert to your own spec",
+        "how": [
+          "Round values to your scale (4 px grid, clean type steps).",
+          "Swap in your own palette, fonts, copy and assets.",
+          "Write the result as a token table or DESIGN.md (part 3)."
+        ],
+        "output": "Your design spec. From here on you work from the spec, not from their pages."
+      }
+    ],
+    "optional_helpers": [
+      {
+        "tool": "Google Stitch",
+        "use": "Can extract a design system from a URL and export DESIGN.md.",
+        "resource_names": [
+          "Google Stitch"
+        ],
+        "resource_ids": [
+          "google-stitch"
+        ]
+      },
+      {
+        "tool": "Chrome DevTools MCP",
+        "use": "Lets an AI agent open the page, take screenshots and read computed styles for you.",
+        "resource_names": [
+          "Chrome DevTools MCP"
+        ],
+        "resource_ids": [
+          "chrome-devtools-mcp"
+        ]
+      },
+      {
+        "tool": "CSS Stats",
+        "use": "Summarises the CSS a page uses (colors, font sizes, specificity). Check that the site is still available before relying on it.",
+        "resource_names": [],
+        "resource_ids": []
+      }
+    ],
+    "capture_sheet_template": {
+      "viewports_px": [
+        1440,
+        1024,
+        768,
+        390
+      ],
+      "container_max_width_px": null,
+      "grid_columns": null,
+      "gutter_px": null,
+      "section_padding_y_px": null,
+      "colors": {
+        "background": null,
+        "surface": null,
+        "text": null,
+        "text_muted": null,
+        "border": null,
+        "primary": null,
+        "accent": null
+      },
+      "fonts": {
+        "heading": null,
+        "body": null,
+        "mono": null
+      },
+      "type_scale": [
+        {
+          "name": "h1",
+          "size_px": null,
+          "line_height": null,
+          "weight": null
+        }
+      ],
+      "radius_px": null,
+      "shadow": null,
+      "components": [
+        {
+          "name": null,
+          "variants": [],
+          "states": []
+        }
+      ],
+      "motion": [
+        {
+          "element": null,
+          "duration_ms": null,
+          "easing": null
+        }
+      ],
+      "breakpoints_px": [],
+      "unknowns": []
+    },
+    "font_tip": "If the reference uses a paid or custom font, identify the rendered font name, then choose a free look-alike from Google Fonts or Fontshare instead of copying the font file."
+  },
+  "part_5_ai_tool_map": {
+    "title": "The AI tool map: what to use for each job",
+    "confidence_note": "Free-tier numbers below were read from public reports on 2026-09-20 and change often. Third-party trackers are named in each source. Confirm on the vendor's pricing page before relying on a number.",
+    "jobs": [
+      {
+        "job": "Analyze screenshots into a spec",
+        "why": "You need a vision-capable model.",
+        "tools": [
+          {
+            "name": "Gemini app",
+            "free_facts": "Free tier with usage limits; reads screenshots and files.",
+            "resource_id": "gemini-app"
+          },
+          {
+            "name": "Claude (free plan)",
+            "free_facts": "Free plan with usage limits; reads images.",
+            "resource_id": "claude-free-plan"
+          },
+          {
+            "name": "ChatGPT (free tier)",
+            "free_facts": "Free tier with usage limits; reads images.",
+            "resource_id": "chatgpt-free-tier"
+          },
+          {
+            "name": "Google Stitch",
+            "free_facts": "Free through Google Labs with a daily credit limit that resets at midnight UTC and no paid plan (Google FAQ as captured June 2026).",
+            "source": "https://www.superdesign.dev/blog/google-stitch-review",
+            "resource_id": "google-stitch"
+          }
+        ]
+      },
+      {
+        "job": "Generate a first draft quickly",
+        "why": "Prompt-to-app builders show a live preview and can sync to GitHub.",
+        "tools": [
+          {
+            "name": "v0",
+            "free_facts": "About $5 per month of credits and a 7-messages-per-day cap reported in July and August 2026.",
+            "source": "https://automationatlas.io/answers/v0-pricing-explained-2026/",
+            "resource_id": "v0"
+          },
+          {
+            "name": "Lovable",
+            "free_facts": "5 credits per day, capped at 30 per month, no custom domain on free (reported August 2026).",
+            "source": "https://www.totalum.app/blog/lovable-pricing-2026",
+            "resource_id": "lovable"
+          },
+          {
+            "name": "Bolt.new",
+            "free_facts": "About 1M tokens per month with a 300K daily cap; Bolt branding stays on free projects (reported July 2026).",
+            "source": "https://www.jetadmin.io/blog/bolt-new-pricing-plans-tokens-and-real-costs-in-2026/",
+            "resource_id": "bolt-new"
+          },
+          {
+            "name": "Google AI Studio (Gemini API)",
+            "free_facts": "Free tier with rate limits; also offers prompt-to-app building.",
+            "resource_id": "google-ai-studio-gemini-api"
+          }
+        ]
+      },
+      {
+        "job": "Refine code in your editor",
+        "why": "Editors and agents can edit many files and run commands.",
+        "tools": [
+          {
+            "name": "GitHub Copilot Free",
+            "free_facts": "Widely reported as 2,000 completions and 50 chat/agent requests per month.",
+            "source": "https://www.fast.io/resources/best-ai-for-coding-free-2026.md",
+            "resource_id": "github-copilot-free"
+          },
+          {
+            "name": "Cursor",
+            "free_facts": "Free Hobby plan exists; exact limits are not published.",
+            "resource_id": "cursor"
+          },
+          {
+            "name": "Cline",
+            "free_facts": "Free extension. You pay your model provider unless you use a free or local model.",
+            "resource_id": "cline"
+          },
+          {
+            "name": "Aider",
+            "free_facts": "Free terminal tool with the same bring-your-own-model cost model.",
+            "resource_id": "aider"
+          },
+          {
+            "name": "OpenCode",
+            "free_facts": "Free terminal agent that connects to many providers.",
+            "resource_id": "opencode"
+          },
+          {
+            "name": "Google Antigravity",
+            "free_facts": "Free tier with a small, changing agent allowance.",
+            "resource_id": "google-antigravity"
+          },
+          {
+            "name": "Gemini CLI",
+            "free_facts": "Since June 18, 2026 it no longer serves free individual-account logins; use a Gemini API key or Antigravity CLI.",
+            "source": "https://developers.google.cn/gemini-code-assist/resources/faqs?hl=en",
+            "resource_id": "gemini-cli"
+          }
+        ]
+      },
+      {
+        "job": "Give the AI eyes and current docs",
+        "why": "Reduces guessing and outdated API use.",
+        "tools": [
+          {
+            "name": "Chrome DevTools MCP",
+            "free_facts": "Free, open source.",
+            "resource_id": "chrome-devtools-mcp"
+          },
+          {
+            "name": "Playwright MCP",
+            "free_facts": "Free, open source.",
+            "resource_id": "playwright-mcp"
+          },
+          {
+            "name": "Context7",
+            "free_facts": "MCP server for current library docs.",
+            "resource_id": "context7"
+          },
+          {
+            "name": "Repomix",
+            "free_facts": "Free; packs a repo into one file.",
+            "resource_id": "repomix"
+          },
+          {
+            "name": "DeepWiki",
+            "free_facts": "AI docs and Q&A for public GitHub repos.",
+            "resource_id": "deepwiki"
+          }
+        ]
+      },
+      {
+        "job": "UI foundation",
+        "why": "AI models write good code on popular, well-documented bases.",
+        "tools": [
+          {
+            "name": "shadcn/ui",
+            "free_facts": "Open source (MIT); components are copied into your repo.",
+            "resource_id": "shadcn-ui"
+          },
+          {
+            "name": "Tailwind CSS",
+            "free_facts": "Open source (MIT); v4 uses @theme for tokens.",
+            "resource_id": "tailwind-css"
+          },
+          {
+            "name": "Radix Primitives",
+            "free_facts": "Open source accessible primitives.",
+            "resource_id": "radix-primitives"
+          },
+          {
+            "name": "Magic UI",
+            "free_facts": "Animated components; use sparingly.",
+            "resource_id": "magic-ui"
+          },
+          {
+            "name": "tweakcn",
+            "free_facts": "Visual theme editor for shadcn/ui.",
+            "resource_id": "tweakcn"
+          }
+        ]
+      },
+      {
+        "job": "Design specs in files",
+        "why": "Persistent instructions that keep every generation on-brand.",
+        "tools": [
+          {
+            "name": "DESIGN.md (Google Labs)",
+            "free_facts": "Open source, alpha.",
+            "resource_id": "design-md-google-labs"
+          },
+          {
+            "name": "Awesome DESIGN.md",
+            "free_facts": "Community examples.",
+            "resource_id": "awesome-design-md"
+          },
+          {
+            "name": "AGENTS.md",
+            "free_facts": "Convention for telling coding agents about your project.",
+            "resource_id": "agents-md"
+          }
+        ]
+      },
+      {
+        "job": "Visual and quality checks",
+        "why": "Numbers beat opinions.",
+        "tools": [
+          {
+            "name": "Playwright",
+            "free_facts": "Screenshot comparison assertions built in.",
+            "resource_id": "playwright"
+          },
+          {
+            "name": "Lighthouse",
+            "free_facts": "Free audits for performance, accessibility, SEO and best practices.",
+            "resource_id": "lighthouse"
+          },
+          {
+            "name": "axe-core",
+            "free_facts": "Open-source accessibility engine.",
+            "resource_id": "axe-core"
+          },
+          {
+            "name": "WAVE Web Accessibility Evaluation Tool",
+            "free_facts": "Free page overlay.",
+            "resource_id": "wave-web-accessibility-evaluation-tool"
+          },
+          {
+            "name": "WebAIM Contrast Checker",
+            "free_facts": "Free contrast ratios.",
+            "resource_id": "webaim-contrast-checker"
+          }
+        ]
+      },
+      {
+        "job": "Deploy",
+        "why": "Pick a host whose free plan fits your use, especially if you take payments.",
+        "tools": [
+          {
+            "name": "Cloudflare Pages",
+            "free_facts": "500 builds per month, 20,000 files per site, 25 MiB per file, 100 custom domains per project (Cloudflare limits page).",
+            "source": "https://developers.cloudflare.com/pages/platform/limits",
+            "resource_id": "cloudflare-pages"
+          },
+          {
+            "name": "Netlify",
+            "free_facts": "Credit-based free plan; confirm current credits.",
+            "resource_id": "netlify"
+          },
+          {
+            "name": "GitHub Pages",
+            "free_facts": "1 GB site limit; not for sites primarily facilitating commercial transactions.",
+            "source": "https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits",
+            "resource_id": "github-pages"
+          },
+          {
+            "name": "Vercel Hobby plan",
+            "free_facts": "Non-commercial personal use only; payment requests from visitors count as commercial.",
+            "source": "https://vercel.com/docs/limits/fair-use-guidelines",
+            "resource_id": "vercel-hobby-plan"
+          }
+        ]
+      }
+    ]
+  },
+  "part_6_workflows": {
+    "title": "Four workflows",
+    "workflows": [
+      {
+        "id": "A",
+        "name": "Builder route",
+        "when_to_use": "You want to see something quickly and do not mind refining later.",
+        "time": "15 to 60 minutes",
+        "cost": "Free credits, limited",
+        "steps": [
+          {
+            "action": "Prepare inputs",
+            "detail": "Two screenshots (desktop, mobile), your brand palette and fonts, your own copy outline."
+          },
+          {
+            "action": "First prompt",
+            "detail": "Attach screenshots and use P1 then P3 (or a single combined prompt). Ask for structure and layout first, not perfection."
+          },
+          {
+            "action": "Review the preview",
+            "detail": "Resize the preview. Note the three biggest differences and write them as one-line requests."
+          },
+          {
+            "action": "Scoped follow-ups",
+            "detail": "One change per message. Use P5 to tighten. Stop after about three rounds if credits are tight."
+          },
+          {
+            "action": "Export",
+            "detail": "Sync to GitHub or download the code so you are not locked in."
+          },
+          {
+            "action": "Finish locally",
+            "detail": "Continue in an editor with paths B or C (spec, responsive, accessibility, performance)."
+          }
+        ],
+        "pitfalls": [
+          "Credits vanish on vague prompts.",
+          "Free plans may keep the vendor's branding and block custom domains.",
+          "Generated code may include placeholder brand assets; run P12."
+        ]
+      },
+      {
+        "id": "B",
+        "name": "Spec-first route",
+        "when_to_use": "You want accuracy and a system you can extend.",
+        "time": "2 to 6 hours",
+        "cost": "0",
+        "steps": [
+          {
+            "action": "Capture and extract",
+            "detail": "Follow part 4 and fill the capture sheet."
+          },
+          {
+            "action": "Analysis prompt",
+            "detail": "Run P1 with screenshots and measurements to get a token JSON."
+          },
+          {
+            "action": "Write the spec",
+            "detail": "Run P2 to produce DESIGN.md with your own palette; lint it if you use the CLI."
+          },
+          {
+            "action": "Scaffold",
+            "detail": "Create the Vite or Next.js project, add Tailwind v4 and shadcn/ui (part 3)."
+          },
+          {
+            "action": "Map tokens",
+            "detail": "Place tokens into @theme. Commit."
+          },
+          {
+            "action": "Build section by section",
+            "detail": "Use P3 for the page shell, then P4 for each section. Commit after each section."
+          },
+          {
+            "action": "Compare",
+            "detail": "Use screenshots at four widths and P5. Add Playwright tests (part 8)."
+          },
+          {
+            "action": "Polish",
+            "detail": "Run P6, P7, P8, P9 and P10 in that order."
+          },
+          {
+            "action": "Swap content",
+            "detail": "Run P12 so nothing from the reference remains."
+          }
+        ],
+        "pitfalls": [
+          "Skipping the commit step makes bad AI edits hard to undo.",
+          "Letting the AI introduce new colors. Tell it to fail rather than invent."
+        ]
+      },
+      {
+        "id": "C",
+        "name": "Design-tool-first route",
+        "when_to_use": "You think visually and want to adjust the design before code.",
+        "time": "3 to 8 hours",
+        "cost": "0",
+        "steps": [
+          {
+            "action": "Generate or draw screens",
+            "detail": "Use Google Stitch from prompts or screenshots, or design in Figma (free plan) or Penpot."
+          },
+          {
+            "action": "Set the system",
+            "detail": "Define color, type and spacing variables in the tool. Export DESIGN.md from Stitch if available."
+          },
+          {
+            "action": "Review by hand",
+            "detail": "Fix contrast, spacing and copy in the design tool before any code exists."
+          },
+          {
+            "action": "Hand off to code",
+            "detail": "Give screenshots plus the token export to your AI editor with P3."
+          },
+          {
+            "action": "Compare and refine",
+            "detail": "Same as route B from the Compare step."
+          }
+        ],
+        "pitfalls": [
+          "Design tools do not guarantee responsive behavior. Always check the built page at 320 to 1440 px."
+        ]
+      },
+      {
+        "id": "D",
+        "name": "Component remix route",
+        "when_to_use": "You need a professional result fast and can accept a familiar visual language.",
+        "time": "1 to 4 hours",
+        "cost": "0",
+        "steps": [
+          {
+            "action": "Choose a base",
+            "detail": "shadcn/ui plus Tailwind is the most AI-friendly."
+          },
+          {
+            "action": "Pick blocks",
+            "detail": "Browse component collections (shadcn blocks, Magic UI, HyperUI, 21st.dev) for hero, pricing, FAQ and footer patterns, checking each license."
+          },
+          {
+            "action": "Retheme",
+            "detail": "Use tweakcn or edit @theme so it matches your tokens."
+          },
+          {
+            "action": "Assemble with AI",
+            "detail": "Ask your editor to compose the page from the chosen blocks, using only your tokens."
+          },
+          {
+            "action": "De-genericize",
+            "detail": "Run P8 so the result does not look like every other template."
+          }
+        ],
+        "pitfalls": [
+          "Sameness. Change type, spacing rhythm and one signature element."
+        ]
+      }
+    ]
+  },
+  "part_7_prompt_library": {
+    "title": "Prompt library",
+    "how_to_use": "Replace [PLACEHOLDERS]. Keep each prompt focused on one task. If the tool supports images, attach screenshots to prompts that mention them.",
+    "prompts": [
+      {
+        "id": "P1",
+        "name": "Screenshots to design analysis",
+        "use_when": "You have screenshots and measurements from DevTools.",
+        "template": "You are a senior UI designer. I attach screenshots of a reference site at 1440 px and 390 px widths, plus measurements from DevTools.\n\nProduce a design analysis as strict JSON with these keys: layout (container_max_width_px, grid_columns, gutter_px, section_padding_y_px), colors (roles: background, surface, text, text_muted, border, primary, primary_text, accent, success, warning, error, each with a hex value), typography (font_families, scale as a list of {name, size_px, line_height, weight}), spacing_scale_px, radius_px, shadows, components (each with a one-line description), interactions_visible, and uncertainties.\n\nRules: Trust my measurements over what you see. Round to a 4 px grid. Mark any guess as \"estimated\". Do not describe or reproduce any logo, brand text or photograph.\n\nMeasurements: [PASTE MEASUREMENTS]"
+      },
+      {
+        "id": "P2",
+        "name": "Analysis to DESIGN.md",
+        "use_when": "You have the JSON from P1.",
+        "template": "Turn the JSON below into a DESIGN.md for my project [PROJECT NAME]. Put machine-readable tokens first, then short rationale sections (Overview, Color, Typography, Layout, Components, Motion, Do and Don't). Replace the reference's brand colors with my palette: [MY PALETTE or \"propose one\"]. Check every text and background pair against WCAG 2.2 AA (4.5:1 normal text, 3:1 large text and UI components) and adjust any failing color, listing each change. Follow the format from the official spec output pasted here: [OUTPUT OF npx @google/design.md spec]\n\nJSON: [PASTE P1 OUTPUT]"
+      },
+      {
+        "id": "P3",
+        "name": "First draft from the spec",
+        "use_when": "Project scaffold and DESIGN.md exist.",
+        "template": "Build [PAGE NAME] as a [Next.js | Vite + React] page with Tailwind CSS v4 and shadcn/ui.\nFollow DESIGN.md strictly: use only its tokens (colors as CSS variables via @theme, type scale, spacing scale, radius). Do not add colors, font sizes or arbitrary pixel values. If something is missing, ask me instead of inventing it.\nSections in order: [LIST SECTIONS].\nMobile first. Semantic HTML (header, nav, main, section, footer), one h1, logical heading order, accessible names for every control.\nContent: [MY COPY or placeholder text I will replace]. Use only these assets: [LIST]. Do not load images or fonts from external sites.\nDo not add dependencies without listing them first.\nOutput the file list, then the full contents of each file."
+      },
+      {
+        "id": "P4",
+        "name": "One section at a time",
+        "use_when": "Rebuilding or refining a single section.",
+        "template": "We are rebuilding one section only: [SECTION NAME].\nReference screenshots (desktop and mobile) are attached. Measurements: [MEASUREMENTS].\nEdit only [FILE]. Do not touch other sections.\nAfter the code, give a table of every spacing, size and color you used and the token each maps to, and flag any value you approximated."
+      },
+      {
+        "id": "P5",
+        "name": "Tighten the match",
+        "use_when": "You have your screenshot (A) and the reference (B) at the same width.",
+        "template": "Compare my screenshot (A) with the reference (B) at [WIDTH] px. List the 10 most visible differences ordered by impact. For each give: location, what differs, the likely CSS cause and the exact change using existing tokens. Then apply only the top 3 changes and stop."
+      },
+      {
+        "id": "P6",
+        "name": "Responsive pass",
+        "use_when": "Desktop looks right.",
+        "template": "Audit [PAGE or FILE] at 320, 390, 768, 1024 and 1440 px. Report horizontal scrolling, overlapping or clipped elements, text under 16 px and tap targets under 44 px. Fix each with mobile-first Tailwind classes and explain each fix in one line."
+      },
+      {
+        "id": "P7",
+        "name": "Accessibility pass",
+        "use_when": "Before every release.",
+        "template": "Audit [PAGE or FILE] against WCAG 2.2 AA. Check landmarks and heading order, alt text (decorative images get empty alt), form labels, keyboard operability and visible focus, contrast for every text and UI state, link and button names, ARIA use (prefer native elements), reduced motion, the lang attribute and the page title. Return a table of issues with severity and fix, then apply the fixes."
+      },
+      {
+        "id": "P8",
+        "name": "De-genericize pass",
+        "use_when": "The result looks like every other AI-made template.",
+        "template": "Review this design for generic AI-template tells and fix them without breaking the design system. Look for: a cream-and-terracotta or near-black-and-neon palette used by default; identical rounded cards with the same shadow everywhere; ALL-CAPS eyebrow labels above every heading; middot-joined meta strings; arrows on every button; decoration with no purpose; stock-sounding hero copy. For each tell propose a change grounded in my real subject ([SUBJECT]) and audience ([AUDIENCE]). Keep exactly one memorable design element and make everything else quieter. Write UI copy in the active voice."
+      },
+      {
+        "id": "P9",
+        "name": "Motion pass",
+        "use_when": "Layout and content are final.",
+        "template": "Add motion only where it explains state or guides attention: a hero reveal on load (400 ms or less), hover and focus feedback (150 to 250 ms), and scroll reveals only if they never delay reading. Use CSS transitions or [Motion library]. No other animation libraries. Disable non-essential animation under prefers-reduced-motion. Never animate in a way that causes layout shift."
+      },
+      {
+        "id": "P10",
+        "name": "Performance pass",
+        "use_when": "Before launch.",
+        "template": "Optimise [PAGE] for Core Web Vitals (LCP 2.5 s or less, INP 200 ms or less, CLS 0.1 or less). Give every image explicit width and height, convert to WebP or AVIF, lazy-load images below the fold, preload the LCP image, self-host and subset fonts with font-display swap, remove unused dependencies and defer non-critical scripts. Then run Lighthouse and report before and after scores."
+      },
+      {
+        "id": "P11",
+        "name": "Precise bug report",
+        "use_when": "Something breaks.",
+        "template": "Bug: [WHAT HAPPENS]. Expected: [WHAT SHOULD HAPPEN]. Where: [URL, viewport, browser]. Steps: [1, 2, 3]. Exact error text: [PASTE]. Relevant files: [PATHS]. Already tried: [LIST]. First explain the most likely cause in two sentences, then give the smallest change that fixes it. Do not refactor unrelated code."
+      },
+      {
+        "id": "P12",
+        "name": "Content and brand swap",
+        "use_when": "Before showing anyone the result.",
+        "template": "Replace all content in [FILES] with mine and remove anything that could be mistaken for another brand. My brand: name [NAME], tagline [TAGLINE], palette [PALETTE], fonts [FONTS], logo file [PATH]. My copy is below. Remove placeholder logos, trademarks, testimonials and statistics I did not provide. List every external asset URL still referenced in the code.\n\nCopy: [PASTE]"
+      }
+    ],
+    "prompting_rules": [
+      "Give numbers, not adjectives: '24 px gap' beats 'more space'.",
+      "One change per message when you are matching a layout.",
+      "Say what must not change ('do not touch the header').",
+      "Paste real error text, not a summary.",
+      "Never paste API keys, passwords or private data into any AI tool.",
+      "Ask the model to list assumptions before it writes code when a request is ambiguous."
+    ]
+  },
+  "part_8_quality_gates": {
+    "title": "Quality gates: how to know it is done",
+    "gates": [
+      {
+        "gate": "Visual match",
+        "how": "Compare screenshots at 1440, 1024, 768 and 390 px (side by side or Playwright screenshot assertions).",
+        "pass_when": "Layout, spacing rhythm and type hierarchy match your spec at all four widths.",
+        "tools": [
+          "Playwright"
+        ],
+        "tool_resource_ids": [
+          "playwright"
+        ]
+      },
+      {
+        "gate": "Token discipline",
+        "how": "Search the code for raw hex colors and arbitrary pixel values outside the theme.",
+        "pass_when": "No stray values; everything references tokens.",
+        "tools": [],
+        "tool_resource_ids": []
+      },
+      {
+        "gate": "Responsive",
+        "how": "Test 320, 390, 768, 1024 and 1440 px.",
+        "pass_when": "No horizontal scroll or clipped content; text is at least 16 px; tap targets are large enough.",
+        "tools": [],
+        "tool_resource_ids": []
+      },
+      {
+        "gate": "Accessibility",
+        "how": "Run Lighthouse and WAVE, then tab through the page with the keyboard.",
+        "pass_when": "No contrast failures, every control reachable and visibly focused, images have alt text, one h1, labels on inputs.",
+        "tools": [
+          "Lighthouse",
+          "WAVE Web Accessibility Evaluation Tool",
+          "axe-core",
+          "WebAIM Contrast Checker"
+        ],
+        "tool_resource_ids": [
+          "lighthouse",
+          "wave-web-accessibility-evaluation-tool",
+          "axe-core",
+          "webaim-contrast-checker"
+        ]
+      },
+      {
+        "gate": "Performance",
+        "how": "Run PageSpeed Insights or Lighthouse on the deployed URL.",
+        "pass_when": "LCP 2.5 s or less, INP 200 ms or less, CLS 0.1 or less (Core Web Vitals 'good').",
+        "tools": [
+          "PageSpeed Insights",
+          "Lighthouse"
+        ],
+        "tool_resource_ids": [
+          "pagespeed-insights",
+          "lighthouse"
+        ]
+      },
+      {
+        "gate": "SEO basics",
+        "how": "Check title, meta description, canonical URL, sitemap, robots and structured data.",
+        "pass_when": "Each page has a unique title and description and is indexable.",
+        "tools": [
+          "Google Search Console",
+          "Schema Markup Validator"
+        ],
+        "tool_resource_ids": [
+          "google-search-console",
+          "schema-markup-validator"
+        ]
+      },
+      {
+        "gate": "Cross-browser",
+        "how": "Open the site in Chrome, Firefox and Safari (or use BrowserStack-style services if you have access).",
+        "pass_when": "No layout breakage in the current versions.",
+        "tools": [
+          "Can I use"
+        ],
+        "tool_resource_ids": [
+          "can-i-use"
+        ]
+      },
+      {
+        "gate": "Content and licenses",
+        "how": "List every image, font and icon, and its license.",
+        "pass_when": "Every asset is yours or licensed for your use, and no reference brand assets remain.",
+        "tools": [
+          "Unsplash",
+          "Google Fonts",
+          "Lucide"
+        ],
+        "tool_resource_ids": [
+          "unsplash",
+          "google-fonts",
+          "lucide"
+        ]
+      },
+      {
+        "gate": "Security basics",
+        "how": "Check that no secrets are in client code, HTTPS is on, and security headers are reasonable.",
+        "pass_when": "No keys in the repo or bundle; headers scan shows no major gaps.",
+        "tools": [
+          "Security Headers",
+          "MDN HTTP Observatory"
+        ],
+        "tool_resource_ids": [
+          "security-headers",
+          "mdn-http-observatory"
+        ]
+      }
+    ],
+    "playwright_snippet": {
+      "language": "typescript",
+      "note": "Playwright compares against a stored baseline image, so create baselines first (npx playwright test --update-snapshots). If you use a reference screenshot as the baseline, it must have exactly the same pixel dimensions. Playwright's npm latest was 1.63.0 on 2026-09-20.",
+      "code": "import { test, expect } from '@playwright/test';\n\nconst widths = [1440, 1024, 768, 390];\n\nfor (const width of widths) {\n  test(`home page at ${width}px`, async ({ page }) => {\n    await page.setViewportSize({ width, height: 900 });\n    await page.goto('http://localhost:5173/');\n    await expect(page).toHaveScreenshot(`home-${width}.png`, {\n      fullPage: true,\n      maxDiffPixelRatio: 0.02,\n    });\n  });\n}",
+      "source": "https://playwright.dev/docs/test-snapshots"
+    }
+  },
+  "part_9_deploy_and_launch": {
+    "title": "Deploy and launch",
+    "pick_a_host_first": "If your site takes payments from visitors, check that the host's free plan allows commercial use before you build on it.",
+    "hosts": [
+      {
+        "name": "Cloudflare Pages",
+        "free_limits": "500 builds per month, 20,000 files per site, 25 MiB per file, 100 custom domains per project.",
+        "commercial_use": "Widely reported as allowed on the free plan; confirm in Cloudflare's current terms.",
+        "confidence": "verified_this_session",
+        "source": "https://developers.cloudflare.com/pages/platform/limits"
+      },
+      {
+        "name": "Netlify",
+        "free_limits": "Credit-based free plan; confirm the current credit amount.",
+        "commercial_use": "Check Netlify's terms.",
+        "confidence": "standard_reference",
+        "source": "https://www.netlify.com/pricing/"
+      },
+      {
+        "name": "GitHub Pages",
+        "free_limits": "1 GB site limit, about 100 GB per month soft bandwidth, 10 builds per hour soft limit.",
+        "commercial_use": "Not allowed for sites primarily directed at facilitating commercial transactions or providing commercial SaaS.",
+        "confidence": "verified_this_session",
+        "source": "https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits"
+      },
+      {
+        "name": "Vercel Hobby",
+        "free_limits": "Free for personal use.",
+        "commercial_use": "Non-commercial only; any method of requesting or processing payment from visitors is treated as commercial. Docs wording about donations has differed between versions, so ask Vercel if unsure.",
+        "confidence": "verified_this_session",
+        "source": "https://vercel.com/docs/limits/fair-use-guidelines"
+      }
+    ],
+    "steps": [
+      "Push the project to a Git repository.",
+      "Connect the repository to the host. For a Vite project the usual build command is `npm run build` with output directory `dist`.",
+      "Prefer static output (Vite, Astro) for the simplest free hosting.",
+      "Add a custom domain, confirm HTTPS works and set the canonical URL.",
+      "Add privacy-friendly analytics (Umami, Plausible or Cloudflare Web Analytics) and verify the site in Google Search Console.",
+      "Submit a sitemap, then re-run part 8 on the live URL.",
+      "Re-check your free-tier limits monthly. They change."
+    ],
+    "paid_access_site_notes": [
+      "Anything your site sends to the browser can be read. If you ship a JSON file of resources to every visitor, a client-side 'gate' only hides it visually. To really restrict content, serve it only after a server or edge function verifies payment.",
+      "Use a payment provider's hosted checkout or payment link so you never handle card data yourself, and compare fees and verification rules for your country.",
+      "A required payment is a purchase, not a donation. Label it honestly (for example 'premium access') and check your local tax and consumer rules.",
+      "Credit the original creators of resources you list, and do not copy their documentation. Link to them and describe them in your own words."
+    ]
+  },
+  "part_10_pitfalls_and_fixes": {
+    "title": "Common pitfalls and fixes",
+    "items": [
+      {
+        "pitfall": "Vague prompts ('make it beautiful')",
+        "symptom": "Generic output.",
+        "fix": "Give tokens, measurements and a reference. Use P1, P2, P3."
+      },
+      {
+        "pitfall": "One giant prompt",
+        "symptom": "Inconsistent sections and broken code.",
+        "fix": "Work one section at a time (P4) and commit after each."
+      },
+      {
+        "pitfall": "Outdated or invented APIs",
+        "symptom": "Build errors and hallucinated packages.",
+        "fix": "Pin versions, feed current docs with Context7, and run the build after every change."
+      },
+      {
+        "pitfall": "Template sameness",
+        "symptom": "Looks like every other AI site.",
+        "fix": "Run P8. Pick one distinctive element and keep the rest quiet."
+      },
+      {
+        "pitfall": "Only checking desktop",
+        "symptom": "Broken mobile layout.",
+        "fix": "Run P6 and test 320 to 1440 px."
+      },
+      {
+        "pitfall": "Ignoring accessibility",
+        "symptom": "Low contrast, no focus ring, unlabeled inputs.",
+        "fix": "Run P7, Lighthouse, WAVE and a keyboard test."
+      },
+      {
+        "pitfall": "Font mismatch",
+        "symptom": "Layout shifts and a different feel.",
+        "fix": "Identify the rendered font and choose a free alternative with similar proportions. Self-host with font-display swap."
+      },
+      {
+        "pitfall": "Hotlinked images and copied assets",
+        "symptom": "Legal risk and slow, fragile pages.",
+        "fix": "Use your own or licensed assets (Unsplash, Pexels, Openverse) and self-host them."
+      },
+      {
+        "pitfall": "Secrets in prompts or client code",
+        "symptom": "Leaked API keys.",
+        "fix": "Keep keys in server environment variables and never paste them into chats."
+      },
+      {
+        "pitfall": "No version control",
+        "symptom": "One bad AI edit destroys hours of work.",
+        "fix": "Commit after every good step and use branches for experiments."
+      },
+      {
+        "pitfall": "Burning free credits",
+        "symptom": "Tool stops after a few prompts.",
+        "fix": "Plan prompts, attach screenshots once, and switch to a free or local model in an editor for iteration."
+      },
+      {
+        "pitfall": "Hosting that forbids your use",
+        "symptom": "Account suspended or plan changes.",
+        "fix": "Read the host's commercial-use rules first (part 9)."
+      }
+    ]
+  },
+  "glossary": [
+    {
+      "term": "Vibe coding",
+      "meaning": "Building software by describing what you want to an AI and iterating on the result, often with little manual coding."
+    },
+    {
+      "term": "Design token",
+      "meaning": "A named design value such as a color, size or spacing step."
+    },
+    {
+      "term": "Design system",
+      "meaning": "The tokens, components and rules that keep a product's design consistent."
+    },
+    {
+      "term": "DESIGN.md",
+      "meaning": "An open, plain-text format from Google Labs that combines design tokens with written rationale for AI agents."
+    },
+    {
+      "term": "DTCG",
+      "meaning": "The W3C Design Tokens Community Group's JSON format for exchanging tokens between tools."
+    },
+    {
+      "term": "Wireframe",
+      "meaning": "A simple, unstyled layout used to plan structure."
+    },
+    {
+      "term": "High-fidelity mock-up",
+      "meaning": "A detailed visual design with real colors, type and content."
+    },
+    {
+      "term": "Handoff",
+      "meaning": "Passing design decisions and assets to developers."
+    },
+    {
+      "term": "Breakpoint",
+      "meaning": "A viewport width where the layout changes."
+    },
+    {
+      "term": "Viewport",
+      "meaning": "The visible area of the page in the browser."
+    },
+    {
+      "term": "Utility-first CSS",
+      "meaning": "Styling by combining small single-purpose classes, as in Tailwind CSS."
+    },
+    {
+      "term": "shadcn/ui",
+      "meaning": "A collection of accessible React components you copy into your own project."
+    },
+    {
+      "term": "MCP (Model Context Protocol)",
+      "meaning": "An open protocol that lets AI assistants connect to tools and data sources."
+    },
+    {
+      "term": "WCAG",
+      "meaning": "Web Content Accessibility Guidelines, the international standard for accessible web content."
+    },
+    {
+      "term": "Contrast ratio",
+      "meaning": "A measure of how different two colors' brightness is; WCAG AA needs 4.5:1 for normal text."
+    },
+    {
+      "term": "LCP",
+      "meaning": "Largest Contentful Paint: how long the biggest visible element takes to load. Good is 2.5 s or less."
+    },
+    {
+      "term": "INP",
+      "meaning": "Interaction to Next Paint: responsiveness to user input. Good is 200 ms or less."
+    },
+    {
+      "term": "CLS",
+      "meaning": "Cumulative Layout Shift: how much the page jumps while loading. Good is 0.1 or less."
+    },
+    {
+      "term": "Semantic HTML",
+      "meaning": "Using elements such as header, nav, main and button for their meaning, which helps accessibility and SEO."
+    },
+    {
+      "term": "ARIA",
+      "meaning": "Attributes that add accessibility information when native HTML is not enough."
+    },
+    {
+      "term": "Static site",
+      "meaning": "A site delivered as pre-built files, cheap and easy to host."
+    },
+    {
+      "term": "Visual regression test",
+      "meaning": "A test that compares screenshots to catch unintended visual changes."
+    },
+    {
+      "term": "Bring your own key (BYOK)",
+      "meaning": "A tool that is free but uses your own model provider account for AI usage."
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/google-labs-code/design.md",
+      "used_for": "DESIGN.md format, CLI commands and alpha status",
+      "confidence": "verified_this_session"
+    },
+    {
+      "url": "https://www.superdesign.dev/blog/google-stitch-review",
+      "used_for": "Google Stitch features and free-credit behavior (third-party review citing Google's FAQ)",
+      "confidence": "verified_this_session"
+    },
+    {
+      "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp/",
+      "used_for": "Chrome DevTools MCP purpose and package name",
+      "confidence": "verified_this_session"
+    },
+    {
+      "url": "https://developers.google.cn/gemini-code-assist/resources/faqs?hl=en",
+      "used_for": "Gemini CLI free-tier change effective June 18, 2026",
+      "confidence": "verified_this_session"
+    },
+    {
+      "url": "https://vercel.com/docs/limits/fair-use-guidelines",
+      "used_for": "Vercel Hobby commercial-use restriction",
+      "confidence": "verified_this_session"
+    },
+    {
+      "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits",
+      "used_for": "GitHub Pages limits, prohibited uses and educational-copy rule",
+      "confidence": "verified_this_session"
+    },
+    {
+      "url": "https://developers.cloudflare.com/pages/platform/limits",
+      "used_for": "Cloudflare Pages free-plan limits",
+      "confidence": "verified_this_session"
+    },
+    {
+      "url": "https://www.totalum.app/blog/lovable-pricing-2026",
+      "used_for": "Lovable free-plan credits (third-party tracker)",
+      "confidence": "verified_this_session"
+    },
+    {
+      "url": "https://www.jetadmin.io/blog/bolt-new-pricing-plans-tokens-and-real-costs-in-2026/",
+      "used_for": "Bolt.new free-plan tokens (third-party tracker)",
+      "confidence": "verified_this_session"
+    },
+    {
+      "url": "https://automationatlas.io/answers/v0-pricing-explained-2026/",
+      "used_for": "v0 free-plan credits (third-party tracker)",
+      "confidence": "verified_this_session"
+    },
+    {
+      "url": "https://www.fast.io/resources/best-ai-for-coding-free-2026.md",
+      "used_for": "GitHub Copilot Free monthly limits (third-party report)",
+      "confidence": "verified_this_session"
+    },
+    {
+      "url": "https://aiweekly.co/learning-ai/machine-learning/how-to-use-hugging-face",
+      "used_for": "Hugging Face free-account quotas (third-party report)",
+      "confidence": "verified_this_session"
+    },
+    {
+      "url": "https://registry.npmjs.org/",
+      "used_for": "Current npm versions of tailwindcss, shadcn, vite, react, next, astro, playwright, chrome-devtools-mcp, @google/design.md on 2026-09-20",
+      "confidence": "verified_this_session"
+    },
+    {
+      "url": "https://api.github.com/",
+      "used_for": "Repository metadata in the resource files (stars, license, last push, archived flag)",
+      "confidence": "verified_this_session"
+    },
+    {
+      "url": "https://www.w3.org/TR/WCAG22/",
+      "used_for": "Contrast, target size and reflow requirements",
+      "confidence": "standard_reference"
+    },
+    {
+      "url": "https://web.dev/articles/vitals",
+      "used_for": "Core Web Vitals thresholds",
+      "confidence": "standard_reference"
+    },
+    {
+      "url": "https://tailwindcss.com/docs/theme",
+      "used_for": "Tailwind v4 @theme variables",
+      "confidence": "standard_reference"
+    },
+    {
+      "url": "https://playwright.dev/docs/test-snapshots",
+      "used_for": "Screenshot comparison assertions",
+      "confidence": "standard_reference"
+    },
+    {
+      "url": "https://lawsofux.com",
+      "used_for": "UX laws summarised in part 2",
+      "confidence": "standard_reference"
+    },
+    {
+      "url": "https://atomicdesign.bradfrost.com",
+      "used_for": "Atomic design layers",
+      "confidence": "standard_reference"
+    }
+  ]
+}
