@@ -81,9 +81,13 @@ const oldResources: ResourceItem[] = [
 
 const newResources1 = extractResources(free1Data);
 const newResources2 = extractResources(free2Data);
+import userFree1Data from './user_free1.json';
+import userFree2Data from './user_free2.json';
+const userResources1 = extractResources(userFree1Data);
+const userResources2 = extractResources(userFree2Data);
 
 // Combine, removing duplicates by ID
-const combined = [...oldResources, ...newResources1, ...newResources2];
+const combined = [...oldResources, ...newResources1, ...newResources2, ...userResources1, ...userResources2];
 const uniqueResourcesMap = new Map();
 combined.forEach(r => uniqueResourcesMap.set(r.id, r));
 

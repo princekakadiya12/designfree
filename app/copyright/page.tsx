@@ -1,53 +1,50 @@
 import React from 'react';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
+import { SiteFooter } from '@/components/site/SiteFooter';
+import { SITE, OWNER } from '@/lib/site';
 
 export const metadata = {
-  title: 'Copyright & Terms | Prince Kakadiya World',
+  title: `Copyright | ${SITE.name}`,
 };
 
 export default function CopyrightPage() {
+  const year = new Date().getFullYear();
+  
   return (
-    <div className="min-h-screen bg-[#faf8f5] flex flex-col">
-      <Header activeTab="" />
-      
-      <main className="flex-1 max-w-4xl mx-auto px-4 py-16 w-full">
-        <div className="bg-white border border-[#e7e5e0] rounded-3xl p-8 md:p-12 shadow-clay">
-          <h1 className="text-3xl font-bold text-[#2d2926] mb-6">Copyright & Credits</h1>
-          <div className="space-y-6 text-sm text-[#44403c] leading-relaxed">
-            
-            <h2 className="text-xl font-semibold text-[#2d2926] mt-8 mb-4">Intellectual Property</h2>
-            <p>
-              &copy; 2026 Prince Kakadiya. All rights reserved. 
-            </p>
-            <p>
-              The original web designs, UI architectures, code templates, and aesthetic compositions showcased in the "Projects" section of this website are the intellectual property of Prince Kakadiya unless otherwise stated. 
-            </p>
+    <div className="flex-1 flex flex-col bg-paper">
+      <main className="flex-1 max-w-3xl mx-auto px-4 py-16 md:py-24 w-full">
+        <h1 className="text-4xl md:text-5xl font-serif text-ink mb-8">Copyright & Credits</h1>
+        
+        <div className="prose prose-neutral prose-headings:font-serif prose-headings:font-normal prose-a:text-ink prose-a:underline-offset-4 max-w-none text-mute">
+          <p>
+            &copy; {year} {OWNER.name}. All rights reserved.
+          </p>
 
-            <h2 className="text-xl font-semibold text-[#2d2926] mt-8 mb-4">Usage Rights</h2>
-            <ul className="list-disc list-inside space-y-2 ml-2">
-              <li><strong>Free Resources:</strong> The resources, tools, and models listed in the "Resources" section are the property of their respective creators and are subject to their own licenses (MIT, Apache, SIL OFL, etc.).</li>
-              <li><strong>Inspiration & Educational Use:</strong> You are free to use the techniques described in the "Learn" section and reference the designs for educational purposes.</li>
-              <li><strong>Direct Replication:</strong> Direct cloning or commercial resale of the exact templates displayed in the showcase without permission is prohibited.</li>
-            </ul>
+          <h2 className="text-2xl text-ink mt-12 mb-4">Website Content</h2>
+          <p>
+            The original designs, text, and layout of {SITE.name} are the intellectual property of {OWNER.name}. They may not be reproduced, distributed, or transmitted in any form without prior written permission, except in the case of brief quotations embodied in critical reviews and certain other noncommercial uses permitted by copyright law.
+          </p>
 
-            <h2 className="text-xl font-semibold text-[#2d2926] mt-8 mb-4">Credits & Acknowledgements</h2>
-            <p>
-              This portal is built utilizing several incredible open-source tools and platforms:
-            </p>
-            <ul className="list-disc list-inside space-y-2 ml-2">
-              <li><strong>Icons:</strong> <a href="https://lucide.dev" target="_blank" rel="noreferrer" className="text-[#6366f1] hover:underline">Lucide React</a></li>
-              <li><strong>Typography:</strong> Inter by Rasmus Andersson (via Google Fonts)</li>
-            </ul>
+          <h2 className="text-2xl text-ink mt-12 mb-4">Third-Party Assets & Credits</h2>
+          <p>
+            This website showcases projects and templates created by {OWNER.name}. Some assets used within those projects (such as stock imagery or specific typefaces) are subject to their own respective licenses.
+          </p>
+          <p>
+            The curated tools listed in the Resources section are the property of their respective creators. {SITE.name} claims no ownership over these external tools.
+          </p>
 
-            <p className="mt-8 pt-6 border-t border-[#e7e5e0]">
-              For business inquiries, collaboration, or licensing, please visit <a href="https://princekakadiya.tech" target="_blank" rel="noreferrer" className="text-[#6366f1] hover:underline">princekakadiya.tech</a> or reach out directly.
-            </p>
-          </div>
+          <h2 className="text-2xl text-ink mt-12 mb-4">Open Source</h2>
+          <p>
+            Portions of the underlying code for this directory are available open-source. Please check the official <a href={SITE.repo} target="_blank" rel="noopener noreferrer">GitHub repository</a> for the specific open-source license applying to the code. The design, branding, and written content remain proprietary unless otherwise stated.
+          </p>
+          
+          <h2 className="text-2xl text-ink mt-12 mb-4">Contact</h2>
+          <p>
+            For permission requests or questions regarding copyright, please contact: <a href={`mailto:${OWNER.email}`}>{OWNER.email}</a>.
+          </p>
         </div>
       </main>
 
-      <Footer />
+      <SiteFooter />
     </div>
   );
 }
