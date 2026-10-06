@@ -30,7 +30,6 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  font-size: clamp(14px, 1vw + 10px, 18px); /* Fluid base font size */
 }
 
 body {
@@ -39,12 +38,12 @@ body {
   font-feature-settings: "ss01", "cv11";
 }
 
-/* Fluid Typography Utilities */
-.text-fluid-hero { font-size: clamp(3rem, 8vw + 1rem, 10rem); line-height: 0.9; }
-.text-fluid-h1 { font-size: clamp(2.5rem, 5vw + 1rem, 5rem); line-height: 1; }
-.text-fluid-h2 { font-size: clamp(2rem, 4vw + 1rem, 4rem); line-height: 1.1; }
-.text-fluid-h3 { font-size: clamp(1.5rem, 3vw + 0.5rem, 2.5rem); line-height: 1.2; }
-.text-fluid-p { font-size: clamp(1rem, 1.5vw + 0.5rem, 1.25rem); line-height: 1.6; }
+/* Fluid Typography Utilities - Tuned to not be overly massive */
+.text-fluid-hero { font-size: clamp(3.5rem, 8vw, 8rem); line-height: 0.9; }
+.text-fluid-h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1; }
+.text-fluid-h2 { font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.1; }
+.text-fluid-h3 { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; }
+.text-fluid-p { font-size: clamp(1rem, 1.5vw + 0.25rem, 1.125rem); line-height: 1.6; }
 
 ::selection {
   background: var(--color-ocean);

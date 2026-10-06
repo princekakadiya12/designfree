@@ -22,18 +22,18 @@ export default function ProjectsDashboard() {
         {isSidebarOpen && (
           <motion.div 
             initial={{ width: 0, opacity: 0 }}
-            animate={{ width: 420, opacity: 1 }}
+            animate={{ width: 380, opacity: 1 }}
             exit={{ width: 0, opacity: 0 }}
             transition={{ type: 'spring', bounce: 0, duration: 0.4 }}
-            className="w-full md:w-[420px] flex-shrink-0 border-r border-line flex flex-col bg-paper overflow-hidden shadow-2xl shadow-ink/5 absolute md:relative z-30 h-full"
+            className="w-full md:w-[380px] flex-shrink-0 border-r border-line flex flex-col bg-paper overflow-hidden shadow-2xl shadow-ink/5 absolute md:relative z-30 h-full"
           >
-            <div className="p-6 md:p-8 border-b border-line bg-paper/90 backdrop-blur-xl sticky top-0 z-10">
-              <div className="flex items-center justify-between mb-6">
+            <div className="p-5 md:p-6 border-b border-line bg-paper/90 backdrop-blur-xl sticky top-0 z-10">
+              <div className="flex items-center justify-between mb-5">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-signal text-white flex items-center justify-center shadow-lg shadow-signal/20">
-                    <LayoutTemplate className="w-5 h-5" />
+                  <div className="w-8 h-8 rounded-full bg-signal text-white flex items-center justify-center shadow-lg shadow-signal/20">
+                    <LayoutTemplate className="w-4 h-4" />
                   </div>
-                  <h2 className="font-serif text-3xl text-ink tracking-tight">Design Library</h2>
+                  <h2 className="font-serif text-2xl text-ink tracking-tight">Design Library</h2>
                 </div>
                 {/* Mobile close button inside sidebar */}
                 <button 
@@ -49,7 +49,7 @@ export default function ProjectsDashboard() {
                   <button
                     key={group.id}
                     onClick={() => setActiveGroup(group.id)}
-                    className={`min-h-[48px] px-6 py-2 text-xs font-mono uppercase tracking-widest rounded-full whitespace-nowrap transition-all duration-300 font-bold ${
+                    className={`min-h-[44px] px-5 py-2 text-xs font-mono uppercase tracking-widest rounded-full whitespace-nowrap transition-all duration-300 font-bold ${
                       activeGroup === group.id
                         ? 'bg-ink text-white shadow-md scale-105'
                         : 'bg-wash text-mute hover:bg-line hover:text-ink'
@@ -61,7 +61,7 @@ export default function ProjectsDashboard() {
               </div>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-4 bg-wash/30">
+            <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-wash/30">
               {filteredProjects.map((project, idx) => (
                 <motion.button
                   whileTap={{ scale: 0.98 }}
@@ -73,13 +73,13 @@ export default function ProjectsDashboard() {
                     setSelectedProject(project);
                     if (window.innerWidth < 768) setSidebarOpen(false);
                   }}
-                  className={`group w-full text-left p-6 rounded-[1.5rem] transition-all duration-300 min-h-[100px] ${
+                  className={`group w-full text-left p-5 rounded-2xl transition-all duration-300 min-h-[80px] ${
                     selectedProject.id === project.id
                       ? 'bg-paper shadow-xl border-transparent ring-2 ring-signal/20 scale-[1.02]'
                       : 'bg-paper/50 hover:bg-paper border border-line hover:border-ocean/30 hover:shadow-md'
                   }`}
                 >
-                  <div className="flex justify-between items-start mb-4">
+                  <div className="flex justify-between items-start mb-3">
                     <h3 className={`text-fluid-h3 font-serif leading-tight ${selectedProject.id === project.id ? 'text-signal' : 'text-ink group-hover:text-ocean'}`}>
                       {project.name}
                     </h3>
@@ -89,7 +89,7 @@ export default function ProjectsDashboard() {
                       {project.kind}
                     </span>
                   </div>
-                  <p className="text-fluid-p text-mute line-clamp-2">{project.tagline}</p>
+                  <p className="text-sm text-mute line-clamp-2">{project.tagline}</p>
                 </motion.button>
               ))}
             </div>
@@ -104,9 +104,9 @@ export default function ProjectsDashboard() {
         {!isSidebarOpen && (
           <button 
             onClick={() => setSidebarOpen(true)}
-            className="absolute left-4 top-6 z-20 min-h-[56px] min-w-[56px] flex items-center justify-center bg-paper border border-line rounded-full shadow-lg hover:scale-105 text-ink transition-all md:hidden"
+            className="absolute left-4 top-4 z-20 min-h-[48px] min-w-[48px] flex items-center justify-center bg-paper border border-line rounded-full shadow-lg hover:scale-105 text-ink transition-all md:hidden"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5" />
           </button>
         )}
 
@@ -115,18 +115,18 @@ export default function ProjectsDashboard() {
           key={selectedProject.id}
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="h-auto p-8 md:p-12 border-b border-line flex flex-col lg:flex-row gap-8 items-start justify-between bg-paper/60 backdrop-blur-2xl sticky top-0 z-10"
+          className="h-auto p-6 md:p-8 border-b border-line flex flex-col lg:flex-row gap-6 items-start justify-between bg-paper/60 backdrop-blur-2xl sticky top-0 z-10"
         >
-          <div className="max-w-4xl pl-16 md:pl-0"> {/* padding left for mobile button */}
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
-              <h1 className="text-fluid-h1 font-serif text-ink tracking-tight">{selectedProject.name}</h1>
-              <span className="self-start sm:self-auto px-4 py-1.5 rounded-full border border-ocean/20 bg-ocean/5 text-[11px] font-mono font-bold text-ocean uppercase tracking-[0.1em]">
+          <div className="max-w-3xl pl-14 md:pl-0"> {/* padding left for mobile button */}
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
+              <h1 className="text-fluid-h2 font-serif text-ink tracking-tight">{selectedProject.name}</h1>
+              <span className="self-start sm:self-auto px-3 py-1 rounded-full border border-ocean/20 bg-ocean/5 text-[10px] font-mono font-bold text-ocean uppercase tracking-[0.1em]">
                 {selectedProject.host}
               </span>
             </div>
-            <p className="text-fluid-p text-mute leading-relaxed mb-8">{selectedProject.description}</p>
+            <p className="text-fluid-p text-mute leading-relaxed mb-6">{selectedProject.description}</p>
             
-            <div className="flex flex-wrap items-center gap-x-8 gap-y-4 mt-4 text-sm font-mono text-mute">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 mt-3 text-xs font-mono text-mute">
               {selectedProject.sections && selectedProject.sections.length > 0 && (
                 <div className="flex items-center gap-2 bg-wash px-3 py-1.5 rounded-lg border border-line">
                   <Filter className="w-4 h-4 text-signal" />
@@ -147,10 +147,10 @@ export default function ProjectsDashboard() {
             href={selectedProject.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group shrink-0 inline-flex items-center justify-center gap-3 px-10 py-5 bg-signal text-white text-base font-bold uppercase tracking-widest rounded-full hover:bg-ink transition-all hover:scale-105 shadow-2xl shadow-signal/20 w-full lg:w-auto min-h-[64px]"
+            className="group shrink-0 inline-flex items-center justify-center gap-2 px-8 py-4 bg-signal text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-ink transition-all hover:scale-105 shadow-2xl shadow-signal/20 w-full lg:w-auto min-h-[48px]"
           >
             Launch Site
-            <ExternalLink className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </motion.a>
         </motion.div>
 

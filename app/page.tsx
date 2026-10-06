@@ -103,33 +103,33 @@ export default function LandingPage() {
         </section>
 
         {/* Philosophy Section */}
-        <section className="py-32 md:py-48 px-4 sm:px-8 lg:px-16 bg-wash border-y border-line/50 relative overflow-hidden">
+        <section className="py-24 md:py-32 px-4 sm:px-8 lg:px-16 bg-wash border-y border-line/50 relative overflow-hidden">
           <div className="max-w-[1440px] mx-auto relative z-10">
-            <div className="grid lg:grid-cols-3 gap-16 lg:gap-24">
+            <div className="grid lg:grid-cols-3 gap-12 lg:gap-16">
               <motion.div 
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 className="col-span-1"
               >
-                <h2 className="text-fluid-h2 font-serif text-ink mb-8">The Philosophy</h2>
+                <h2 className="text-fluid-h2 font-serif text-ink mb-6">The Philosophy</h2>
                 <p className="text-mute text-fluid-p">
                   We believe that great design is not magic. It is a series of observable decisions. DesignFree exists to help developers study these decisions in the wild.
                 </p>
               </motion.div>
 
-              <div className="lg:col-span-2 grid sm:grid-cols-2 gap-12 md:gap-16">
+              <div className="lg:col-span-2 grid sm:grid-cols-2 gap-8 md:gap-12">
                 <motion.div 
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ delay: 0.1 }}
-                  className="bg-paper p-10 md:p-12 rounded-[2rem] shadow-sm border border-line/30 hover:border-signal/30 transition-colors"
+                  className="bg-paper p-8 md:p-10 rounded-3xl shadow-sm border border-line/30 hover:border-signal/30 transition-colors"
                 >
-                  <div className="w-16 h-16 rounded-2xl bg-signal/10 flex items-center justify-center text-signal mb-8">
-                    <Sparkles className="w-8 h-8" />
+                  <div className="w-14 h-14 rounded-2xl bg-signal/10 flex items-center justify-center text-signal mb-6">
+                    <Sparkles className="w-7 h-7" />
                   </div>
-                  <h3 className="text-fluid-h3 font-serif mb-4 text-ink">Curation over scale</h3>
+                  <h3 className="text-fluid-h3 font-serif mb-3 text-ink">Curation over scale</h3>
                   <p className="text-mute text-fluid-p">We don't list every tool on the internet. We only list the tools that actually solve problems for designers and developers.</p>
                 </motion.div>
                 
@@ -138,12 +138,12 @@ export default function LandingPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ delay: 0.2 }}
-                  className="bg-paper p-10 md:p-12 rounded-[2rem] shadow-sm border border-line/30 hover:border-ocean/30 transition-colors"
+                  className="bg-paper p-8 md:p-10 rounded-3xl shadow-sm border border-line/30 hover:border-ocean/30 transition-colors"
                 >
-                  <div className="w-16 h-16 rounded-2xl bg-ocean/10 flex items-center justify-center text-ocean mb-8">
-                    <Palette className="w-8 h-8" />
+                  <div className="w-14 h-14 rounded-2xl bg-ocean/10 flex items-center justify-center text-ocean mb-6">
+                    <Palette className="w-7 h-7" />
                   </div>
-                  <h3 className="text-fluid-h3 font-serif mb-4 text-ink">Live context matters</h3>
+                  <h3 className="text-fluid-h3 font-serif mb-3 text-ink">Live context matters</h3>
                   <p className="text-mute text-fluid-p">Screenshots lie. Our projects dashboard loads the actual live sites so you can inspect the DOM, feel the animations, and see the responsive states.</p>
                 </motion.div>
               </div>
@@ -152,21 +152,21 @@ export default function LandingPage() {
         </section>
 
         {/* Feature Modules */}
-        <section className="bg-ink text-paper py-32 md:py-48 px-4 sm:px-8 lg:px-16 overflow-hidden">
+        <section className="bg-ink text-paper py-24 md:py-32 px-4 sm:px-8 lg:px-16 overflow-hidden">
           <div className="max-w-[1440px] mx-auto">
             <motion.div 
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7 }}
-              className="grid lg:grid-cols-2 gap-16 lg:gap-24 mb-32 items-center"
+              className="grid lg:grid-cols-2 gap-12 lg:gap-16 mb-24 items-center"
             >
               <div>
-                <h2 className="text-fluid-h1 font-serif mb-8 text-paper">
+                <h2 className="text-fluid-h1 font-serif mb-6 text-paper">
                   Stop inspecting element. <br />
                   <span className="text-signal italic">Start comparing.</span>
                 </h2>
-                <p className="text-fluid-p text-paper/70 mb-12 max-w-lg">
+                <p className="text-fluid-p text-paper/70 mb-10 max-w-lg">
                   The Projects Dashboard is a split-pane environment. Keep your list of references on the left, and interact with the live iframe on the right. No more opening twenty tabs.
                 </p>
                 <motion.div whileTap={tapAnimation} className="inline-block">
@@ -177,43 +177,43 @@ export default function LandingPage() {
                 </motion.div>
               </div>
               
-              <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden border border-paper/10 bg-ink-soft shadow-[0_0_100px_rgba(230,57,70,0.1)]">
+              <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden border border-paper/10 bg-ink-soft shadow-[0_0_100px_rgba(230,57,70,0.1)]">
                 <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.03)_50%,transparent_75%)] bg-[length:250%_250%] animate-[gradient_4s_linear_infinite]"></div>
-                <div className="absolute inset-6 md:inset-10 rounded-[2rem] border border-paper/5 bg-ink overflow-hidden flex shadow-inner">
-                   <div className="w-1/3 border-r border-paper/10 p-6 opacity-60 hidden md:flex flex-col gap-5">
-                     <div className="h-4 w-1/2 bg-paper/20 rounded-full"></div>
-                     <div className="h-12 w-full bg-paper/10 rounded-xl mt-6"></div>
-                     <div className="h-12 w-full bg-paper/10 rounded-xl"></div>
-                     <div className="h-12 w-full bg-signal/20 rounded-xl border border-signal/30"></div>
+                <div className="absolute inset-6 md:inset-8 rounded-2xl border border-paper/5 bg-ink overflow-hidden flex shadow-inner">
+                   <div className="w-1/3 border-r border-paper/10 p-6 opacity-60 hidden md:flex flex-col gap-4">
+                     <div className="h-3 w-1/2 bg-paper/20 rounded-full"></div>
+                     <div className="h-10 w-full bg-paper/10 rounded-xl mt-5"></div>
+                     <div className="h-10 w-full bg-paper/10 rounded-xl"></div>
+                     <div className="h-10 w-full bg-signal/20 rounded-xl border border-signal/30"></div>
                    </div>
-                   <div className="flex-1 p-8 flex flex-col items-center justify-center bg-gradient-to-b from-transparent to-ocean/5">
-                     <div className="h-8 w-3/4 bg-paper/20 rounded-full mb-10"></div>
-                     <div className="h-48 w-4/5 bg-paper/10 rounded-2xl"></div>
+                   <div className="flex-1 p-6 flex flex-col items-center justify-center bg-gradient-to-b from-transparent to-ocean/5">
+                     <div className="h-6 w-3/4 bg-paper/20 rounded-full mb-8"></div>
+                     <div className="h-40 w-4/5 bg-paper/10 rounded-2xl"></div>
                    </div>
                 </div>
               </div>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 gap-12">
+            <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
               <motion.div 
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="group p-10 md:p-16 rounded-[3rem] bg-ink-soft border border-paper/5 hover:border-ocean/50 hover:bg-[#1A303A] transition-all relative overflow-hidden"
+                className="group p-8 md:p-12 rounded-[2.5rem] bg-ink-soft border border-paper/5 hover:border-ocean/50 hover:bg-[#1A303A] transition-all relative overflow-hidden"
               >
-                <div className="absolute top-0 right-0 p-12 opacity-5 group-hover:opacity-10 group-hover:text-ocean transition-all transform group-hover:scale-110 duration-700">
-                  <Layers className="w-64 h-64" />
+                <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 group-hover:text-ocean transition-all transform group-hover:scale-110 duration-700">
+                  <Layers className="w-48 h-48" />
                 </div>
                 <div className="relative z-10">
-                  <span className="inline-block px-5 py-2 rounded-full border border-paper/20 text-sm font-mono uppercase tracking-widest mb-10 text-paper/60">Database</span>
-                  <h3 className="text-fluid-h2 font-serif mb-8 text-paper">Curated Resources</h3>
-                  <p className="text-paper/60 mb-12 max-w-sm text-fluid-p">
+                  <span className="inline-block px-4 py-1.5 rounded-full border border-paper/20 text-xs font-mono uppercase tracking-widest mb-8 text-paper/60">Database</span>
+                  <h3 className="text-fluid-h2 font-serif mb-6 text-paper">Curated Resources</h3>
+                  <p className="text-paper/60 mb-10 max-w-sm text-fluid-p">
                     A constantly updated directory of hidden gems. Open source alternatives, niche utilities, and developer tools you won't find on Twitter.
                   </p>
                   <motion.div whileTap={tapAnimation} className="inline-block">
-                    <Link href="/resources/" className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-paper text-ink hover:bg-ocean hover:text-white transition-colors shadow-lg">
-                      <ArrowUpRight className="w-8 h-8 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    <Link href="/resources/" className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-paper text-ink hover:bg-ocean hover:text-white transition-colors shadow-lg">
+                      <ArrowUpRight className="w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                     </Link>
                   </motion.div>
                 </div>
@@ -224,20 +224,20 @@ export default function LandingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="group p-10 md:p-16 rounded-[3rem] bg-ink-soft border border-paper/5 hover:border-signal/50 hover:bg-[#3A1F22] transition-all relative overflow-hidden"
+                className="group p-8 md:p-12 rounded-[2.5rem] bg-ink-soft border border-paper/5 hover:border-signal/50 hover:bg-[#3A1F22] transition-all relative overflow-hidden"
               >
-                <div className="absolute top-0 right-0 p-12 opacity-5 group-hover:opacity-10 group-hover:text-signal transition-all transform group-hover:scale-110 duration-700">
-                  <BookOpen className="w-64 h-64" />
+                <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 group-hover:text-signal transition-all transform group-hover:scale-110 duration-700">
+                  <BookOpen className="w-48 h-48" />
                 </div>
                 <div className="relative z-10">
-                  <span className="inline-block px-5 py-2 rounded-full border border-paper/20 text-sm font-mono uppercase tracking-widest mb-10 text-paper/60">Playbook</span>
-                  <h3 className="text-fluid-h2 font-serif mb-8 text-paper">Vibe-Coder's Guide</h3>
-                  <p className="text-paper/60 mb-12 max-w-sm text-fluid-p">
+                  <span className="inline-block px-4 py-1.5 rounded-full border border-paper/20 text-xs font-mono uppercase tracking-widest mb-8 text-paper/60">Playbook</span>
+                  <h3 className="text-fluid-h2 font-serif mb-6 text-paper">Vibe-Coder's Guide</h3>
+                  <p className="text-paper/60 mb-10 max-w-sm text-fluid-p">
                     Learn the exact methodology for tearing down a professional design system and perfectly replicating it using AI tools like Cursor and Claude.
                   </p>
                   <motion.div whileTap={tapAnimation} className="inline-block">
-                    <Link href="/guide/" className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-paper text-ink hover:bg-signal hover:text-white transition-colors shadow-lg">
-                      <ArrowUpRight className="w-8 h-8 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    <Link href="/guide/" className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-paper text-ink hover:bg-signal hover:text-white transition-colors shadow-lg">
+                      <ArrowUpRight className="w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                     </Link>
                   </motion.div>
                 </div>
