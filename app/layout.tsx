@@ -46,8 +46,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${geist.variable} ${geistMono.variable} ${instrument.variable}`}>
       <body className="font-sans min-h-dvh flex flex-col bg-paper text-ink" suppressHydrationWarning>
+        <div className="bg-noise"></div>
         <SiteHeader />
-        <main className="flex-1 flex flex-col">
+        <main className="flex-1 flex flex-col relative z-10">
           {children}
         </main>
       </body>
