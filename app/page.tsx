@@ -1,11 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'motion/react';
+import { motion, Variants } from 'motion/react';
 import { ArrowRight, Layout, Layers, BookOpen, ArrowUpRight } from 'lucide-react';
 import { SiteFooter } from '@/components/site/SiteFooter';
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -13,12 +13,12 @@ const containerVariants = {
   }
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { 
     opacity: 1, 
     y: 0,
-    transition: { type: 'spring', stiffness: 100, damping: 20 }
+    transition: { type: "spring", stiffness: 100, damping: 20 }
   }
 };
 
