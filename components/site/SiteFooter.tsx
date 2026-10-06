@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Logo } from './Logo';
-import { COMMUNITY, NAV, OWNER, SITE } from '@/lib/site';
+import { COMMUNITY, NAV, OWNER, GARGI, SITE } from '@/lib/site';
 
 export function SiteFooter() {
   return (
@@ -26,11 +26,16 @@ export function SiteFooter() {
         </div>
 
         <div className="md:col-span-3">
-          <h3 className="font-mono text-[11px] uppercase tracking-[0.14em] text-faint">Prince Kakadiya</h3>
+          <h3 className="font-mono text-[11px] uppercase tracking-[0.14em] text-faint">The Curators</h3>
           <ul className="mt-4 space-y-2.5 text-[14px]">
             <li>
               <a href={OWNER.website} target="_blank" rel="noopener noreferrer" className="text-ink-soft hover:text-ink">
-                {OWNER.websiteLabel} ↗
+                Prince Kakadiya ↗
+              </a>
+            </li>
+            <li>
+              <a href={GARGI.website} target="_blank" rel="noopener noreferrer" className="text-ink-soft hover:text-ink">
+                Gargi ↗
               </a>
             </li>
             <li>

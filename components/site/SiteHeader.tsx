@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { Logo } from './Logo';
-import { NAV, OWNER } from '@/lib/site';
+import { NAV, OWNER, GARGI } from '@/lib/site';
 
 export function SiteHeader() {
   const pathname = usePathname() ?? '/';
@@ -49,15 +49,25 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-4 md:flex">
+        <div className="hidden items-center gap-2 md:flex">
           <a
             href={OWNER.website}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex min-h-[48px] items-center gap-2 px-4 font-mono text-xs uppercase tracking-[0.1em] text-mute hover:text-ink transition-colors font-bold"
+            className="group flex min-h-[48px] items-center gap-1.5 px-3 font-mono text-xs uppercase tracking-[0.1em] text-mute hover:text-ink transition-colors font-bold"
           >
-            {OWNER.websiteLabel}
-            <ArrowUpRight className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            {OWNER.name}
+            <ArrowUpRight className="h-3 w-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-signal" />
+          </a>
+          <span className="text-line-strong">|</span>
+          <a
+            href={GARGI.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex min-h-[48px] items-center gap-1.5 px-3 font-mono text-xs uppercase tracking-[0.1em] text-mute hover:text-ink transition-colors font-bold"
+          >
+            {GARGI.name}
+            <ArrowUpRight className="h-3 w-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-ocean" />
           </a>
         </div>
 
@@ -99,8 +109,17 @@ export function SiteHeader() {
                 rel="noopener noreferrer"
                 className="px-4 py-3 font-mono text-xs uppercase tracking-widest text-mute flex items-center justify-between hover:text-ink"
               >
-                {OWNER.websiteLabel}
-                <ArrowUpRight className="w-4 h-4" />
+                {OWNER.name}
+                <ArrowUpRight className="w-4 h-4 text-signal" />
+              </a>
+              <a
+                href={GARGI.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-3 font-mono text-xs uppercase tracking-widest text-mute flex items-center justify-between hover:text-ink"
+              >
+                {GARGI.name}
+                <ArrowUpRight className="w-4 h-4 text-ocean" />
               </a>
             </nav>
           </motion.div>

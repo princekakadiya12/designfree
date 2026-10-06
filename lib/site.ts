@@ -6,19 +6,25 @@ export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 export const asset = (path: string) => `${BASE_PATH}${path}`;
 
 export const SITE = {
-  name: 'DesignFree',
+  name: 'Prince & Gargi Design',
   tagline: 'A working library for people who build the web',
   description:
-    'Live website designs you can inspect side by side, hand-picked free tools most developers have never heard of, and a field guide to replicating any design with AI.',
+    'Live website designs, hand-picked free tools most developers have never heard of, and a field guide to replicating any design with AI. Curated by Prince Kakadiya and Gargi.',
   url: 'https://princekakadiya12.github.io/designfree/',
   repo: 'https://github.com/princekakadiya12/designfree',
 } as const;
 
 export const OWNER = {
-  name: 'Prince Kakadiya',
+  name: 'Prince & Gargi',
   email: 'princekakadiya20@gmail.com',
   website: 'https://princekakadiya.tech',
   websiteLabel: 'princekakadiya.tech',
+} as const;
+
+export const GARGI = {
+  name: 'Gargi',
+  website: 'https://gargiui.netlify.app/',
+  websiteLabel: 'gargiui.netlify.app',
 } as const;
 
 export const SUPPORT = {

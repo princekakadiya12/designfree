@@ -21,14 +21,14 @@ export function LogoMark({ className = 'h-8 w-8' }: { className?: string }) {
 
 export function Logo() {
   return (
-    <Link href="/" className="flex items-center gap-3 group">
+    <Link href="/" className="flex items-center gap-4 group">
       <LogoMark />
-      <span className="flex flex-col leading-none">
-        <span className="text-[17px] font-serif italic tracking-wide text-ink">
-          Design<span className="text-signal not-italic font-medium">Free</span>
+      <span className="flex flex-col leading-[1.1]">
+        <span className="text-[17px] font-serif italic tracking-wide text-ink flex gap-1 items-baseline">
+          Prince<span className="text-signal not-italic font-medium text-sm mx-0.5">&</span>Gargi <span className="font-sans font-bold text-[10px] uppercase tracking-widest text-ocean ml-1 relative -top-[2px]">Design</span>
         </span>
-        <span className="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-mute group-hover:text-ink transition-colors">
-          by Prince Kakadiya
+        <span className="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-mute group-hover:text-ink transition-colors flex items-center gap-1.5">
+          Curated Portfolio <span className="w-1 h-1 rounded-full bg-signal/50"></span> Studio
         </span>
       </span>
     </Link>
