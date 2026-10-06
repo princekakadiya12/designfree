@@ -12,24 +12,25 @@
 }
 
 @theme {
-  --color-paper: #F7F7F4;
-  --color-wash: #EFEFDF; /* Richer wash */
-  --color-line: #E2E2D9;
-  --color-line-strong: #C4C4B7;
-  --color-ink: #1A1A19; /* Rich dark charcoal */
-  --color-ink-soft: #2E2E2C;
-  --color-mute: #70706B;
-  --color-faint: #9E9E99;
-  --color-signal: #E35026; /* Deep burnt orange */
-  --color-signal-soft: #FDEEE9;
-  --color-moss: #4A6352; /* Sophisticated sage/moss */
-  --color-moss-soft: #E6EDE8;
+  --color-paper: #FAF8F2; /* Warm beach sand light */
+  --color-wash: #F1EBE0; /* Deeper wet sand */
+  --color-line: #E2D9C8;
+  --color-line-strong: #C4B9A3;
+  --color-ink: #022B3A; /* Deep ocean navy */
+  --color-ink-soft: #1B3B48;
+  --color-mute: #647B84;
+  --color-faint: #9CB2BA;
+  --color-signal: #E63946; /* Vibrant Coral Red */
+  --color-signal-soft: #FFEDEE;
+  --color-ocean: #2A9D8F; /* Vibrant Teal/Green */
+  --color-ocean-soft: #E4F4F2;
 }
 
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  font-size: clamp(14px, 1vw + 10px, 18px); /* Fluid base font size */
 }
 
 body {
@@ -38,8 +39,15 @@ body {
   font-feature-settings: "ss01", "cv11";
 }
 
+/* Fluid Typography Utilities */
+.text-fluid-hero { font-size: clamp(3rem, 8vw + 1rem, 10rem); line-height: 0.9; }
+.text-fluid-h1 { font-size: clamp(2.5rem, 5vw + 1rem, 5rem); line-height: 1; }
+.text-fluid-h2 { font-size: clamp(2rem, 4vw + 1rem, 4rem); line-height: 1.1; }
+.text-fluid-h3 { font-size: clamp(1.5rem, 3vw + 0.5rem, 2.5rem); line-height: 1.2; }
+.text-fluid-p { font-size: clamp(1rem, 1.5vw + 0.5rem, 1.25rem); line-height: 1.6; }
+
 ::selection {
-  background: var(--color-ink);
+  background: var(--color-ocean);
   color: var(--color-paper);
 }
 

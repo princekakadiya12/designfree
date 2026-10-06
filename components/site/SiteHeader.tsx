@@ -32,16 +32,16 @@ export function SiteHeader() {
         scrolled ? 'bg-paper/85 backdrop-blur-xl border-b border-line shadow-sm' : 'bg-transparent border-b border-transparent'
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-4 sm:px-8 lg:px-16">
+      <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-4 sm:px-8 lg:px-16">
         <Logo />
 
-        <nav className="hidden items-center gap-2 md:flex p-1 rounded-full border border-line/50 bg-paper/50 backdrop-blur-md" aria-label="Main">
+        <nav className="hidden items-center gap-2 md:flex p-1.5 rounded-full border border-line/50 bg-paper/50 backdrop-blur-md" aria-label="Main">
           {NAV.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`relative rounded-full px-4 py-1.5 text-[13.5px] font-medium transition-all ${
-                isActive(item.href) ? 'text-paper bg-ink' : 'text-mute hover:text-ink hover:bg-line/20'
+              className={`relative rounded-full px-5 py-2.5 min-h-[48px] flex items-center text-sm font-medium transition-all ${
+                isActive(item.href) ? 'text-white bg-ink' : 'text-mute hover:text-ink hover:bg-line/30'
               }`}
             >
               {item.label}
@@ -54,21 +54,21 @@ export function SiteHeader() {
             href={OWNER.website}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-1 font-mono text-[11.5px] uppercase tracking-widest text-mute hover:text-ink transition-colors"
+            className="group flex min-h-[48px] items-center gap-2 px-4 font-mono text-xs uppercase tracking-[0.1em] text-mute hover:text-ink transition-colors font-bold"
           >
             {OWNER.websiteLabel}
-            <ArrowUpRight className="h-3 w-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <ArrowUpRight className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
         </div>
 
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="-mr-2 rounded-full p-2 text-ink md:hidden hover:bg-line/20 transition-colors"
+          className="-mr-2 flex min-h-[48px] min-w-[48px] items-center justify-center rounded-full p-2 text-ink md:hidden hover:bg-line/30 transition-colors"
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
         >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
 

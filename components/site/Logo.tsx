@@ -21,7 +21,7 @@ export function LogoMark({ className = 'h-8 w-8' }: { className?: string }) {
 
 export function Logo() {
   return (
-    <div className="flex items-center gap-3">
+    <Link href="/" className="flex items-center gap-3 group">
       <LogoMark />
       <span className="flex flex-col leading-none">
         <span className="text-[17px] font-serif italic tracking-wide text-ink">
@@ -31,6 +31,6 @@ export function Logo() {
           by Prince Kakadiya
         </span>
       </span>
-    </div>
+    </Link>
   );
 }
