@@ -45,6 +45,22 @@ import { SiteFooter } from '@/components/site/SiteFooter';
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${geist.variable} ${geistMono.variable} ${instrument.variable}`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              document.addEventListener('contextmenu', event => event.preventDefault());
+              document.onkeydown = function(e) {
+                if(e.keyCode == 123) { return false; } // F12
+                if(e.ctrlKey && e.shiftKey && e.keyCode == 73) { return false; } // Ctrl+Shift+I
+                if(e.ctrlKey && e.shiftKey && e.keyCode == 67) { return false; } // Ctrl+Shift+C
+                if(e.ctrlKey && e.shiftKey && e.keyCode == 74) { return false; } // Ctrl+Shift+J
+                if(e.ctrlKey && e.keyCode == 85) { return false; } // Ctrl+U
+              }
+            `
+          }}
+        />
+      </head>
       <body className="font-sans min-h-dvh flex flex-col bg-paper text-ink" suppressHydrationWarning>
         <div className="bg-noise"></div>
         <SiteHeader />
